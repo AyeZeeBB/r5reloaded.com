@@ -1,0 +1,109 @@
+.servers > .btn:nth-child(1) {
+  color: var(--light);
+}
+.servers > .btn:nth-child(1):hover {
+  color: var(--red);
+}
+.servers > .btn:nth-child(2) {
+  color: var(--red);
+}
+.mainbox > .black-background {
+  height: 590px;
+  padding: 0 0 80px 0px;
+}
+.popular > .title {
+  padding-left: 30px;
+}
+.popular > .block-content {
+  padding-left: 30px;
+}
+.popular .block-content > .block {
+  padding: 0;
+  margin: 20px 20px 0 0;
+}
+.popular .row-content > .row-block {
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
+}
+.popular .row-content > .row-block > .text {
+  margin-right: 0;
+}
+.hover {
+  position: relative;
+  width: 270px;
+}
+.hover > .img-overlay img {
+  width: 270px;
+  height: 270px;
+}
+.hover > .img-overlay > .overlay p {
+  text-align: center;
+  background-color: var(--red);
+  color: var(--white);
+}
+.hover > .img-overlay > .overlay a {
+  text-decoration: none;
+  color: var(--white);
+}
+.hover > .img-overlay > .overlay p:nth-child(1) {
+  position: absolute;
+  width: 120px;
+  top: -80px;
+  left: 110px;
+}
+.hover > .img-overlay > .overlay p:nth-child(1) i {
+  margin: 5px 5px 0 0;
+  font-size: 15px;
+}
+.hover > .img-overlay > .overlay p:nth-child(2) {
+  position: absolute;
+  width: 100px;
+  top: -80px;
+  left: -10px;
+}
+.hover > .img-overlay > .overlay p:nth-child(2) i {
+  margin: 5px 5px 0 0;
+  font-size: 15px;
+}
+.hover > .img-overlay > .overlay p:nth-child(3) {
+  position: absolute;
+  width: 70px;
+  top: -300px;
+  left: 160px;
+}
+.items {
+  display: flex;
+}
+.items img {
+  margin-right: 10px;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 25px;
+}
+.items > .item {
+  display: flex;
+  flex-direction: column;
+}
+.items > .item p:nth-child(1) {
+  color: var(--red);
+}
+.items > .item p:nth-child(1) i {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  padding: 3px;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 10px;
+}
+.item > .text-white {
+  width: 100%;
+  font-size: 20px;
+}
+.mainbox .center > .button {
+  width: 190px;
+  text-decoration: none;
+}

@@ -1,0 +1,691 @@
+@import "./base/layout.css";
+@import "./base/reset.css";
+@import "./components/button.css";
+@import "./base/base.css";
+
+@import "./pages/servers.css";
+@import "./pages/docs.css";
+@import "./pages/contributors.css";
+
+/* header */
+
+.header {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo a {
+  display: flex;
+  padding-right: 50px;
+  border-right: solid 1px var(--dark);
+}
+.meniu {
+  display: flex;
+  align-items: center;
+}
+.btn {
+  margin-right: 30px;
+  font-size: 14px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+.meniu a {
+  text-decoration: none;
+  color: var(--light);
+  cursor: pointer;
+}
+.meniu a:hover {
+  color: var(--red);
+}
+.btn:nth-child(1) {
+  color: var(--red);
+}
+.header .navbar-toggler {
+  display: none;
+  height: min-content;
+  margin: 18px 10px 5px 0;
+  cursor: pointer;
+}
+.header .navbar-toggler .bar {
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background: var(--red);
+  border-radius: 10%;
+  transition: 0.4s;
+}
+.header input {
+  display: none;
+}
+/* main */
+.background {
+  padding: 50px 80px;
+  background-color: var(--dark);
+  border-radius: 25px;
+}
+/* welcome */
+.welcome {
+  height: 400px;
+  width: 100%;
+  background-image: url("../img/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 25px;
+}
+.welcome > .description {
+  display: inline-block;
+  width: 50%;
+  padding-top: 70px;
+  padding-left: 60px;
+}
+.description p {
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 35px;
+  color: var(--red);
+  text-shadow: black 0px 0 20px;
+}
+.description h1 {
+  line-height: 60px;
+  font-size: 45px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: black 0px 0 20px;
+}
+.description h1 span {
+  color: var(--red);
+}
+
+.descriptionshowcase
+{
+  width: 400px;
+  height: 100px;
+}
+
+.descriptionshowcase p {
+  font-weight: 800;
+  margin-bottom: 20px;
+  margin-top: 25px;
+  font-size: 35px;
+  color: var(--red);
+  text-shadow: black 0px 0 20px;
+  text-align: center;
+}
+.descriptionshowcase h1 {
+  line-height: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: black 0px 0 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.descriptionshowcase h2 {
+  font-size: 15px;
+  width: 90%;
+  padding-left: 25px;
+  color: #b9b9b9;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.descriptionshowcase h1 span {
+  color: var(--red);
+}
+/* install-video section */
+.black-background {
+  /* width: 100%; */
+  margin-top: 50px;
+  padding: 10px 60px 50px 60px;
+  background-color: #1f2122;
+  border-radius: 25px;
+}
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+.title {
+  padding: 30px 0;
+  font-size: 35px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--red);
+}
+span {
+  text-decoration: underline;
+  color: var(--white);
+}
+.lighter-background {
+  background-color: var(--dark);
+  border-radius: 25px;
+}
+.block-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block-content2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-left {
+  margin-right: auto;
+}
+
+.button-right {
+  margin-left: auto;
+}
+.block-content:nth-child(2) {
+  margin-bottom: 30px;
+}
+.block {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 30px 20px 20px 20px;
+}
+.block img {
+  width: 180px;
+  height: 150px;
+  border-radius: 35px 20px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+.text-white {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+.text-white > i {
+  display: flex;
+  justify-content: center;
+  float: right;
+  color: yellow;
+}
+.text-white i > span {
+  margin-left: 5px;
+  margin-top: 3px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+}
+.text-no-bold {
+  font-size: 16px;
+}
+.text-no-bold > i {
+  display: flex;
+  justify-content: center;
+  float: right;
+  color: var(--red);
+}
+.text-no-bold i > span {
+  margin-left: 5px;
+  margin-top: 3px;
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--white);
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center > .button {
+  display: flex;
+  width: 180px;
+  margin-top: -25px;
+  text-align: center;
+  z-index: 10;
+}
+
+.row-block {
+  display: flex;
+  padding: 10px 0px;
+  justify-content: left;
+  align-items: center;
+}
+.row-block img {
+  border-radius: 20px;
+}
+.row-block > .text {
+  margin-right: 100px;
+}
+.row-block > .text:nth-child(2) {
+  margin-left: 20px;
+}
+.text > .text-white {
+  margin-top: -15px;
+}
+/* footer */
+
+body > footer {
+  margin-bottom: 30px;
+}
+footer > p {
+  text-align: center;
+  font-weight: 400;
+  color: var(--white);
+}
+footer p > span:hover {
+  color: var(--red);
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  .welcome {
+    height: 550px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .background {
+    margin: 55px 0 0 0;
+  }
+  .row > .background {
+    padding: 0px 0px;
+  }
+  .background .welcome > .description {
+    padding: 100px 0;
+  }
+  .black-background > .row-content {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .row-content .row-block > .text {
+    flex-direction: column;
+    margin-right: 0px;
+  }
+  .row-content .row-block .text > .text-white {
+    margin-left: 10px;
+  }
+  .black-background .row-content .margin .text > .text-no-bold {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome {
+    height: 550px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .background {
+    margin: 55px 0 0 0;
+  }
+  .background .welcome > .description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .description h1 {
+    line-height: 40px;
+    font-size: 35px;
+  }
+  .black-background {
+    padding: 0 0 50px 20px;
+  }
+  .background .install-video > .block-content {
+    display: inline-block;
+  }
+  .background .install-video .block-content > .block img {
+    width: 170px;
+    height: 130px;
+  }
+  .block .text > .text-white {
+    font-size: 14px;
+  }
+  .block .text .text-white i > span {
+    font-size: 12px;
+  }
+  .block .text .text-no-bold {
+    font-size: 14px;
+  }
+  .block .text .text-no-bold > i {
+    font-size: 12px;
+  }
+  .block .text .text-no-bold i > span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .welcome {
+    height: 600px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .meniu {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: 0.6s;
+    background-color: var(--white);
+    z-index: -1;
+  }
+  .header .navbar-toggler {
+    display: grid !important;
+  }
+  .logo a {
+    border: none;
+  }
+  .meniu > .btn {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid var(--light);
+  }
+  .header input:checked ~ .meniu {
+    transform: translateY(70%);
+  }
+  .header input:checked ~ .navbar-toggler {
+    margin-top: 20px;
+  }
+  input:checked ~ .navbar-toggler .bar:nth-child(1) {
+    position: absolute;
+    transform: rotate(45deg);
+  }
+  input:checked ~ .navbar-toggler .bar:nth-child(2) {
+    display: none;
+  }
+  input:checked ~ .navbar-toggler .bar:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  .btn {
+    margin: 0;
+  }
+
+  .background {
+    margin: 55px 0 0 0;
+  }
+  .welcome > .description {
+    width: 75%;
+    padding-top: 70px;
+    padding-left: 60px;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .block-content {
+    flex-wrap: wrap;
+  }
+  .block {
+    margin: 0 20px 20px 0;
+  }
+  .install-video .block-content > .block img {
+    width: 200px;
+    height: 600px;
+  }
+  .block-content:nth-child(2) {
+    margin: 0;
+  }
+  .text > .text-white {
+    font-size: 18px;
+  }
+  .text .text-white i > span {
+    font-size: 13px;
+  }
+  .text > .text-no-bold {
+    font-size: 18px;
+  }
+  .text .text-no-bold > i {
+    font-size: 15px;
+  }
+  .text .text-no-bold i > span {
+    font-size: 13px;
+  }
+  .row-content {
+    text-align: center;
+  }
+  .row-block {
+    display: inline-block;
+    padding: 30px 0px;
+    align-content: center;
+    border: none;
+  }
+  .row-block img {
+    width: 175px;
+    margin-right: 60px;
+    border: none;
+  }
+  .row-block > .text:nth-child(2) {
+    margin-left: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .welcome {
+    height: 570px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .black-background {
+    padding: 0 0 50px 20px;
+  }
+  .block-content > .block img {
+    width: 140px;
+    height: 100px;
+  }
+  .text-white {
+    font-size: 14px;
+  }
+  .text-white i > span {
+    font-size: 11px;
+  }
+  .text-no-bold {
+    font-size: 14px;
+  }
+  .text-no-bold > i {
+    font-size: 11px;
+  }
+  .text-no-bold i > span {
+    font-size: 10px;
+  }
+  .row-content {
+    display: block;
+  }
+}
+@media (max-width: 1400px) {
+  .welcome {
+    height: 600px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .row-block > .text {
+    margin-right: 60px;
+  }
+}
+
+.hover-animation {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease; /* Apply the transition effect */
+}
+
+.hover-animation:hover {
+  transform: scale(1.1); /* Apply the scale transformation on hover */
+}
+
+.installvideo {
+  width: 100%;
+  height: 600px;
+}
+
+
+.pic-ctn {
+  width: 100%;
+  height: 600px; /* Adjust the height of the container as needed */
+  position: relative;
+  overflow: hidden; /* To ensure the child images are clipped within the container */
+}
+
+@keyframes display {
+  0% {
+    /*transform: translateX(200px);*/
+    opacity: 0;
+  }
+  10% {
+    /*transform: translateX(0);*/
+    opacity: 1;
+  }
+  20% {
+    /*transform: translateX(0);*/
+    opacity: 1;
+  }
+  30% {
+    /*transform: translateX(-200px);*/
+    opacity: 0;
+  }
+  100% {
+    /*transform: translateX(-200px);*/
+    opacity: 0;
+  }
+}
+
+.pic-ctn > img {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  animation: display 10s infinite;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.pic-ctn > img:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.pic-ctn > img:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.pic-ctn > img:nth-child(4) {
+  animation-delay: 6s;
+}
+
+.pic-ctn > img:nth-child(5) {
+  animation-delay: 8s;
+}
+
+.text-white > .regionimg {
+  width: 35px;
+  border-radius: 0px;
+}
+
+@media (max-width: 1400px) {
+  .pic-ctn {
+    width: 100%;
+    height: 500px; /* Adjust the height of the container as needed */
+    position: relative;
+    overflow: hidden; /* To ensure the child images are clipped within the container */
+  }
+
+  .installvideo {
+    width: 100%;
+    height: 450px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pic-ctn {
+    width: 100%;
+    height: 400px; /* Adjust the height of the container as needed */
+    position: relative;
+    overflow: hidden; /* To ensure the child images are clipped within the container */
+  }
+
+  .installvideo {
+    width: 95%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pic-ctn {
+    width: 100%;
+    height: 300px; /* Adjust the height of the container as needed */
+    position: relative;
+    overflow: hidden; /* To ensure the child images are clipped within the container */
+  }
+
+  .installvideo {
+    width: 95%;
+    height: 300px;
+  }
+
+  .text-white > .regionimg {
+    width: 35px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pic-ctn {
+    width: 100%;
+    height: 200px; /* Adjust the height of the container as needed */
+    position: relative;
+    overflow: hidden; /* To ensure the child images are clipped within the container */
+  }
+
+  .installvideo {
+    width: 95%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pic-ctn {
+    width: 100%;
+    height: 200px; /* Adjust the height of the container as needed */
+    position: relative;
+    overflow: hidden; /* To ensure the child images are clipped within the container */
+  }
+
+  .installvideo {
+    width: 95%;
+    height: 200px;
+  }
+}
