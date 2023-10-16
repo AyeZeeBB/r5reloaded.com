@@ -5,6 +5,8 @@ $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
 $headers = array(
    "Accept: application/json",
@@ -17,7 +19,7 @@ curl_close($curl);
 
 $jsondecode = json_decode($resp);
 
-$names = json_decode(file_get_contents("http://country.io/names.json"), true);
+$names = json_decode(file_get_contents("./json/countryname.json"), true);
 
 $currentplayers = 0;
 foreach($jsondecode->servers as $server)
@@ -176,7 +178,7 @@ function GetMapName($map) {
                       $playerCounterColor = $server->playerCount > 0 ? "color: var(--green);" : "color: var(--red);";
 
                       echo '<div class="row-block">';
-                      echo '<img src="./maps/' . $server->map . '.png" alt="img" width="150" height="100" style="border: 5px solid #ffffff20;"/>';
+                      echo '<img src="./img/maps/' . $server->map . '.png" alt="img" width="150" height="100" style="border: 5px solid #ffffff20;"/>';
                       echo '<div class="text">';
                       echo '<p class="text-white"><img class="regionimg" src="img/flags/' . strtolower($server->region) . '.svg" title="' . $names[$server->region] . '"/> ' . $server->name . '</p>';
                       echo '<p class="text-no-bold">' . GetPlaylistName($server->playlist) . '</p>';

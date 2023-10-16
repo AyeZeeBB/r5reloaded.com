@@ -1,0 +1,76 @@
+{
+    "contributors": [
+      {
+        "name": "Amos",
+        "desc": "Big Man, Founder",
+        "image": "https://cdn.discordapp.com/avatars/424586578220941323/884fc9bbdaa50e2a4afa5158d51d58c3.webp?size=80",
+        "github": "https://github.com/Mauler125"
+      },
+      {
+        "name": "IcePixel",
+        "desc": "Former Developer",
+        "image": "https://cdn.discordapp.com/avatars/193333133968408576/d8e6d800b2e8b0d1e01a538b299d6dc5.webp?size=80",
+        "github": "https://github.com/IcePixelx"
+      },
+      {
+        "name": "Rexx",
+        "desc": "Master Server, Developer",
+        "image": "https://cdn.discordapp.com/avatars/269519792472457227/cea292eb65f1f406dfa17580f5b4e7e5.webp?size=80",
+        "github": "https://github.com/r-ex"
+      },
+      {
+        "name": "Sal",
+        "desc": "Master Server, Developer",
+        "image": "https://cdn.discordapp.com/avatars/246304756698578945/ad815df184e26a9b2b5f3664bd9e30d8.webp?size=80",
+        "github": "https://github.com/salcodes1"
+      },
+      {
+        "name": "KralRindo",
+        "desc": "Scripting, Maps, Models",
+        "image": "https://cdn.discordapp.com/avatars/701847483998928996/a_d715bee2220d2529c841a19664d222ce.webp?size=80",
+        "github": "https://github.com/kralrindo"
+      },
+      {
+        "name": "Zee",
+        "desc": "Website, Scripting",
+        "image": "https://cdn.discordapp.com/avatars/784643541045215262/c4dbdcc15ed4130b695dafa7e07c90eb.webp?size=80",
+        "github": "https://github.com/AyeZeeBB"
+      },
+      {
+        "name": "CafeFPS",
+        "desc": "Scripting, Flowstate",
+        "image": "https://cdn.discordapp.com/avatars/277299585100152832/c2d22f2db3eb1cc892aca3229ca1bb0d.webp?size=80",
+        "github": "https://github.com/ColombianGuy"
+      },
+      {
+        "name": "Mostly Fireproof",
+        "desc": "Scripting",
+        "image": "https://cdn.discordapp.com/avatars/99327125340831744/3d2548dad1e5f472f69946baa17087a8.webp?size=80",
+        "github": "https://github.com/mostlyfireproof"
+      },
+      {
+        "name": "Julefox",
+        "desc": "Scripting",
+        "image": "https://cdn.discordapp.com/avatars/444439575134339092/a_70fddd32dd524ccfbbc36660a60509d0.webp?size=80",
+        "github": "https://github.com/Julefox"
+      },
+      {
+        "name": "ReGlitched",
+        "desc": "Scripting",
+        "image": "https://cdn.discordapp.com/avatars/401831376690872320/f7c181b42b9b24494b4078cc10caeae1.webp?size=80",
+        "github": "https://github.com/ReGlitched"
+      },
+      {
+        "name": "O Robotic",
+        "desc": "Helper",
+        "image": "https://cdn.discordapp.com/avatars/877486197155442698/17a9e198d862aa282dc1169553a9b6f3.webp?size=80",
+        "github": "https://github.com/o-robotic"
+      },
+      {
+        "name": "Neeflow",
+        "desc": "Helper",
+        "image": "https://cdn.discordapp.com/avatars/261255333559664640/8c2633dd96f35e605fc25a05e72a0570.webp?size=80",
+        "github": ""
+      }
+    ]
+}

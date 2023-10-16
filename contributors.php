@@ -1,13 +1,6 @@
 <?php
-$url = 'https://raw.githubusercontent.com/AyeZeeBB/R5R_Contributors/main/contributors.json';
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$data = curl_exec($ch);
-curl_close($ch);
-
-$contributors = json_decode($data);
+$json = file_get_contents("./json/contributors.json");
+$contributors = json_decode($json);
 ?>
 
 <!DOCTYPE html>
