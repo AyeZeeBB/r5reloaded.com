@@ -30,6 +30,25 @@
   }
 }
 
+.downloadbutton, .downloadbutton2 {
+  display: flex;
+  width: 150px;
+  height: 45px;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 14px;
+  align-items: center;
+  text-transform: capitalize;
+  text-decoration: none;
+  justify-content: center;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 30px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+}
+
 .discordbutton {
   display: flex;
   width: 50px;
@@ -45,6 +64,7 @@
   color: var(--white);
   border-radius: 30px;
   cursor: pointer;
+  transition-duration: 0.4s;
   border: none;
 }
 
@@ -62,6 +82,7 @@
   background-color: var(--white);
   color: var(--white);
   border-radius: 30px;
+  transition-duration: 0.4s;
   cursor: pointer;
   border: none;
 }
@@ -80,8 +101,17 @@
   background-color: #007DC5;
   color: var(--white);
   border-radius: 30px;
+  transition-duration: 0.4s;
   cursor: pointer;
   border: none;
+}
+
+.discordbutton:hover, .trellobutton:hover, .githubbutton:hover, .downloadbutton:hover {
+  transform: scale(1.1); /* Grow the button on hover */
+}
+
+.downloadbutton2:hover {
+  transform: scale(1.05); /* Grow the button on hover */
 }
 
 .row-block > .button {
