@@ -78,4 +78,4 @@ Project Link: [https://github.com/AyeZeeBB/r5reloaded.com](https://github.com/Ay
 [issues-shield]: https://img.shields.io/github/issues/AyeZeeBB/r5reloaded.com.svg?style=flat-square
 [issues-url]: https://github.com/AyeZeeBB/r5reloaded.com/issues
 [license-shield]: https://img.shields.io/github/license/AyeZeeBB/r5reloaded.com.svg?style=flat-square
-[license-url]: https://github.com/AyeZeeBB/r5reloaded.com/blob/master/LICENSE.md
+[license-url]: https://github.com/AyeZeeBB/r5reloaded.com/blob/master/LICENSE
