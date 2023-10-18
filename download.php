@@ -60,8 +60,9 @@
           <!-- Install Tut -->
           <div class="install-video black-background">
             <h3 class="title" style="color: var(--white)">Video Install Tutorial</h3>
-            <iframe class="installvideo" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
-            </iframe>
+            <p style="color: var(--white);font-size: 20px">Comming Soon</p>
+            <!--<iframe class="installvideo" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            </iframe>-->
           </div>
 
           <!-- Whats R5Reloaded? -->
