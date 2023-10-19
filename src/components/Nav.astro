@@ -1,0 +1,86 @@
+---
+interface Props {
+  active: string;
+}
+
+const { active } = Astro.props;
+---
+
+<div class="container">
+  <div class="row">
+    <div class="header">
+      <div class="logo">
+        <a href="./index.php"
+          ><img src="./img/R5R-Logo-White.gif" alt="logo" width="80" /></a
+        >
+      </div>
+      <input type="checkbox" id="toggle" />
+      <div class={active}>
+        <a class="btn" href="./index.php">Home</a>
+        <a class="btn" href="./servers.php">Servers</a>
+        <a class="btn" href="https://docs.r5reloaded.com/">Docs</a>
+        <a class="btn" href="./contributors.php">Contributors</a>
+        <a class="btn" href="./download.php">Download</a>
+      </div>
+      <label class="navbar-toggler" for="toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header {
+    display: flex;
+    position: sticky;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo a {
+    display: flex;
+    padding-right: 50px;
+    border-right: solid 1px var(--dark);
+  }
+  .meniu {
+    display: flex;
+    align-items: center;
+  }
+  .btn {
+    margin-right: 30px;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+  }
+  .meniu a {
+    text-decoration: none;
+    color: var(--light);
+    cursor: pointer;
+  }
+  .meniu a:hover {
+    color: var(--red);
+  }
+  .btn:nth-child(1) {
+    color: var(--red);
+  }
+  .header .navbar-toggler {
+    display: none;
+    height: min-content;
+    margin: 18px 10px 5px 0;
+    cursor: pointer;
+  }
+  .header .navbar-toggler .bar {
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background: var(--red);
+    border-radius: 10%;
+    transition: 0.4s;
+  }
+  .header input {
+    display: none;
+  }
+</style>

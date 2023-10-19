@@ -1,0 +1,250 @@
+<div class="welcome" style="background-image: url('./img/banner.png');">
+  <div class="description" style="width:100%">
+    <p style="width:50%">Welcome To R5Reloaded</p>
+    <h1 style="width:50%">An Apex Legends Modding SDK</h1>
+    <div class="block-content2" style="width:90%">
+      <a
+        href="https://github.com/Mauler125/r5sdk/releases/latest"
+        class="downloadbutton"
+        style="margin-right: 10px;box-shadow: 0px 0px 10px #00000090;"
+        >Download</a
+      >
+      <a
+        href="https://discord.gg/r5reloaded"
+        class="discordbutton button-right"
+        style="margin-right: 10px;box-shadow: 0px 0px 10px #00000090"
+        ><img
+          src="./img/discord.png"
+          alt="logo"
+          width="30"
+          title="Discord"
+        /></a
+      >
+      <a
+        href="https://github.com/Mauler125/r5sdk"
+        class="githubbutton"
+        style="margin-right: 10px;box-shadow: 0px 0px 10px #00000090;"
+        ><img src="./img/github.png" alt="logo" width="50" title="Github" /></a
+      >
+      <a
+        href="https://trello.com/b/ymr4R3j9/r5reloaded"
+        class="trellobutton"
+        style="box-shadow: 0px 0px 10px #00000090;"
+        ><img src="./img/trello.png" alt="logo" width="50" title="Trello" /></a
+      >
+    </div>
+  </div>
+</div>
+
+<style>
+  .welcome {
+    height: 400px;
+    width: 100%;
+    background-image: url("../img/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .welcome > .description {
+    display: inline-block;
+    width: 50%;
+    padding-top: 70px;
+    padding-left: 60px;
+  }
+  .description p {
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 35px;
+    color: var(--white);
+    text-shadow: black 0px 0 20px;
+  }
+  .description h1 {
+    line-height: 60px;
+    font-size: 45px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: black 0px 0 20px;
+  }
+  .description h1 span {
+    color: var(--red);
+  }
+
+  .block-content2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .button-left {
+    margin-right: auto;
+  }
+
+  .button-right {
+    margin-left: auto;
+  }
+
+  .downloadbutton {
+    display: flex;
+    width: 150px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 14px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .discordbutton {
+    display: flex;
+    width: 50px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 14px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: #5166f7;
+    color: var(--white);
+    border-radius: 30px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border: none;
+  }
+
+  .githubbutton {
+    display: flex;
+    width: 50px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 14px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--white);
+    border-radius: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .trellobutton {
+    display: flex;
+    width: 50px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 14px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: #007dc5;
+    color: var(--white);
+    border-radius: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .discordbutton:hover,
+  .trellobutton:hover,
+  .githubbutton:hover,
+  .downloadbutton:hover {
+    transform: scale(1.1); /* Grow the button on hover */
+  }
+
+  @media (max-width: 576px) {
+    .welcome {
+      height: 550px;
+      width: 100%;
+      background-image: url("../img/banner.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .welcome {
+      height: 550px;
+      width: 100%;
+      background-image: url("../img/banner.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 25px;
+    }
+    .background .welcome > .description {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0;
+      align-items: center;
+      text-align: center;
+    }
+    .description h1 {
+      line-height: 40px;
+      font-size: 35px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .welcome {
+      height: 600px;
+      width: 100%;
+      background-image: url("../img/banner.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 25px;
+    }
+    .welcome > .description {
+      width: 75%;
+      padding-top: 70px;
+      padding-left: 60px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .welcome {
+      height: 570px;
+      width: 100%;
+      background-image: url("../img/banner.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 25px;
+    }
+    .block-content > .block img {
+      width: 140px;
+      height: 100px;
+    }
+  }
+  @media (max-width: 1400px) {
+    .welcome {
+      height: 600px;
+      width: 100%;
+      background-image: url("../img/banner.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 25px;
+    }
+  }
+</style>
