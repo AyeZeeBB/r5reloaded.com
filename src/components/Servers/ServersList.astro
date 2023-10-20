@@ -8,18 +8,7 @@ const servers = ServerListing.servers;
 <div class="black-background">
   <div class="row-content">
     <br />
-    {
-      servers.map((server) => (
-        <ServerItem
-          name={server.name}
-          playlist={server.playlist}
-          region={server.region}
-          players={server.playerCount}
-          minplayers={server.maxPlayers}
-          map={server.map}
-        />
-      ))
-    }
+    {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
   </div>
 </div>
 
@@ -31,7 +20,7 @@ const servers = ServerListing.servers;
     align-items: center;
   }
   .row-block img {
-    border-radius: 20px;
+    border-radius: 5px;
   }
   .row-block > .text {
     margin-right: 100px;
@@ -91,7 +80,7 @@ const servers = ServerListing.servers;
       margin-left: 30px;
     }
     .row-block img {
-      border-radius: 20px;
+      border-radius: 5px;
     }
     .row-block > .text {
       margin-right: 100px;

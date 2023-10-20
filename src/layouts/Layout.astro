@@ -19,16 +19,14 @@ const { title } = Astro.props;
     <meta content="R5Reloaded" property="og:title" />
     <meta content="An Apex Legends Modding SDK" property="og:description" />
     <meta content="https://r5reloaded.com" property="og:url" />
-    <meta
-      content="https://r5reloaded.com/newsite/img/R5R-Logo-White.gif"
-      property="og:image"
-    />
+    <meta content="https://r5reloaded.com/newsite/img/R5R-Logo-White.gif" property="og:image" />
     <meta content="#d43d2c" data-react-helmet="true" name="theme-color" />
   </head>
   <body>
     <slot />
   </body>
 </html>
+
 <style is:global>
   :root {
     --white: #fff;
@@ -63,7 +61,7 @@ const { title } = Astro.props;
   .background {
     padding: 50px 80px;
     background-color: var(--dark);
-    border-radius: 25px;
+    border-radius: 5px;
   }
 
   .container {
@@ -92,7 +90,7 @@ const { title } = Astro.props;
     margin-top: 50px;
     padding: 10px 60px 50px 60px;
     background-color: #1f2122;
-    border-radius: 25px;
+    border-radius: 5px;
   }
 
   @media (min-width: 576px) {

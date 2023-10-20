@@ -1,6 +1,4 @@
 ---
-import CountryJson from "../../data/json/countryname.json";
-
 interface Props {
   name: string;
   playlist: string;
@@ -9,17 +7,12 @@ interface Props {
   minplayers: number;
   map: string;
 }
-
 const { name, playlist, region, players, minplayers, map } = Astro.props;
 
+import CountryJson from "../../data/json/countryname.json";
 const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
 const mapimg = "img/maps/" + map.toLowerCase() + ".png";
-
-let colorcode = "color: var(--red);";
-
-if (players > 0) {
-  colorcode = "color: var(--green);";
-}
+const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";
 ---
 
 <div class="row-block">
@@ -27,10 +20,8 @@ if (players > 0) {
     <p class="text-white">
       <img class="regionimg" src={regionimg} title={CountryJson[region]} />
       {name}
-    </p><p class="text-no-bold">{playlist}</p><p
-      class="text-no-bold"
-      style={colorcode}
-    >
+    </p>
+    <p class="text-no-bold">{playlist}</p><p class="text-no-bold" style={colorcode}>
       {players}/{minplayers} Players
     </p>
   </div>
@@ -44,7 +35,7 @@ if (players > 0) {
     align-items: center;
   }
   .row-block img {
-    border-radius: 20px;
+    border-radius: 5px;
   }
   .row-block > .text {
     margin-right: 100px;
