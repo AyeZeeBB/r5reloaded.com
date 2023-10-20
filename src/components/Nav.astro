@@ -4,6 +4,17 @@ interface Props {
 }
 
 const { active } = Astro.props;
+
+//God please help im not sure how todo this properly so this is how it will be done for the time being
+let Home = "btn";
+let Servers = "btn";
+let Contributors = "btn";
+let Download = "btn";
+
+if (active == "home") Home = "activebtn";
+if (active == "servers") Servers = "activebtn";
+if (active == "contributors") Contributors = "activebtn";
+if (active == "download") Download = "activebtn";
 ---
 
 <div class="container">
@@ -15,12 +26,12 @@ const { active } = Astro.props;
         </a>
       </div>
       <input type="checkbox" id="toggle" />
-      <div class={active}>
-        <a class="btn" href="./">Home</a>
-        <a class="btn" href="./servers">Servers</a>
+      <div class="navmenu">
+        <a class={Home} href="./">Home</a>
+        <a class={Servers} href="./servers">Servers</a>
         <a class="btn" href="https://docs.r5reloaded.com/">Docs</a>
-        <a class="btn" href="./contributors">Contributors</a>
-        <a class="btn" href="./download">Download</a>
+        <a class={Contributors} href="./contributors">Contributors</a>
+        <a class={Download} href="./download">Download</a>
       </div>
       <label class="navbar-toggler" for="toggle">
         <span class="bar"></span>
@@ -44,26 +55,35 @@ const { active } = Astro.props;
     padding-right: 50px;
     border-right: solid 1px var(--dark);
   }
-  .meniu {
+  .navmenu {
     display: flex;
     align-items: center;
   }
+
   .btn {
     margin-right: 30px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     background-color: transparent;
-    border: none;
-  }
-  .meniu a {
     text-decoration: none;
     color: var(--light);
     cursor: pointer;
+    border: none;
   }
-  .meniu a:hover {
+
+  .activebtn {
+    margin-right: 30px;
+    font-size: 16px;
+    text-align: center;
+    background-color: transparent;
+    text-decoration: none;
     color: var(--red);
+    cursor: pointer;
+    border: none;
+    font-style;
   }
-  .btn:nth-child(1) {
+
+  .navmenu a:hover {
     color: var(--red);
   }
   .header .navbar-toggler {
@@ -89,7 +109,7 @@ const { active } = Astro.props;
       display: flex;
       justify-content: space-between;
     }
-    .meniu {
+    .navmenu {
       display: grid;
       position: absolute;
       width: 100%;
@@ -105,12 +125,12 @@ const { active } = Astro.props;
     .logo a {
       border: none;
     }
-    .meniu > .btn {
+    .navmenu > .btn {
       width: 100%;
       padding: 20px;
       border-bottom: 1px solid var(--light);
     }
-    .header input:checked ~ .meniu {
+    .header input:checked ~ .navmenu {
       transform: translateY(70%);
     }
     .header input:checked ~ .navbar-toggler {
