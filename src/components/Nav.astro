@@ -5,16 +5,11 @@ interface Props {
 
 const { active } = Astro.props;
 
-//God please help im not sure how todo this properly so this is how it will be done for the time being
-let Home = "btn";
-let Servers = "btn";
-let Contributors = "btn";
-let Download = "btn";
-
-if (active == "home") Home = "activebtn";
-if (active == "servers") Servers = "activebtn";
-if (active == "contributors") Contributors = "activebtn";
-if (active == "download") Download = "activebtn";
+//not sure if this is the right way to do this
+// but it should work for now
+const getClassName = (section: string) => {
+  return active === section ? "activebtn" : "btn";
+};
 ---
 
 <div class="container">
@@ -27,11 +22,11 @@ if (active == "download") Download = "activebtn";
       </div>
       <input type="checkbox" id="toggle" />
       <div class="navmenu">
-        <a class={Home} href="./">Home</a>
-        <a class={Servers} href="./servers">Servers</a>
+        <a class={getClassName("home")} href="./">Home</a>
+        <a class={getClassName("servers")} href="./servers">Servers</a>
         <a class="btn" href="https://docs.r5reloaded.com/">Docs</a>
-        <a class={Contributors} href="./contributors">Contributors</a>
-        <a class={Download} href="./download">Download</a>
+        <a class={getClassName("contributors")} href="./contributors">Contributors</a>
+        <a class={getClassName("download")} href="./download">Download</a>
       </div>
       <label class="navbar-toggler" for="toggle">
         <span class="bar"></span>
