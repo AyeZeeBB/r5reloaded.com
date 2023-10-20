@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Nav from "../components/Nav.astro";
+import Welcome from "../components/Contributors/Welcome.astro";
+import ContributorsList from "../components/Contributors/ContributorsList.astro";
+---
+
+<Layout title="R5Reloaded">
+  <Nav active="contributors" />
+  <main>
+    <div class="container" style="padding-top: 0px">
+      <div class="row">
+        <div class="background">
+          <Welcome />
+          <ContributorsList />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

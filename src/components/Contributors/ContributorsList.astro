@@ -1,0 +1,21 @@
+---
+import ContributorItem from "./ContributorItem.astro";
+import ContributorsJson from "../../data/json/contributors.json";
+---
+
+<div class="mainbox contribus">
+  <div class="black-background">
+    <br />
+    {ContributorsJson.map((user) => <ContributorItem name={user.name} description={user.desc} githuburl={user.github} img={user.image} />)}
+  </div>
+</div>
+
+<style>
+  .contribus > .black-background {
+    height: 100%;
+    width: 100%;
+    padding-bottom: 40px;
+    justify-content: center;
+    padding-left: 90px;
+  }
+</style>

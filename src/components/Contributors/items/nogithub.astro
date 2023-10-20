@@ -1,0 +1,92 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  githuburl: string;
+  githubtext: string;
+  img: string;
+}
+
+const { name, description, githuburl, githubtext, img } = Astro.props;
+---
+
+<div class="block hover">
+  <div class="items">
+    <img src={img} alt="img" />
+    <div class="item">
+      <p class="text-name">{name}</p>
+      <p class="text-description" style="margin-top: 0;font-size: 12px;">{description}</p>
+      <p class="text-github" style="margin-top: 0;font-size: 12px;"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .text-name {
+    font-size: 18px;
+  }
+  .text-description {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .text-github {
+    font-weight: 800;
+    color: var(--red);
+  }
+  .hover-animation {
+    display: inline-block;
+    padding: 10px 20px;
+    transition: transform 0.3s ease; /* Apply the transition effect */
+  }
+
+  .hover-animation:hover {
+    transform: scale(1.1); /* Apply the scale transformation on hover */
+  }
+  .block {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 30px 10px 10px 10px;
+  }
+  .block img {
+    width: 150px;
+    height: 150px;
+    border-radius: 35px 20px;
+  }
+  .hover {
+    position: relative;
+    width: 240px;
+  }
+  .items {
+    display: flex;
+  }
+  .items img {
+    margin-right: 10px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 25px;
+  }
+  .items > .item {
+    display: flex;
+    flex-direction: column;
+  }
+  .items > .item p:nth-child(1) {
+    color: var(--red);
+  }
+  .items > .item p:nth-child(1) i {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    padding: 3px;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 10px;
+  }
+  .item > .text-white {
+    width: 100%;
+    font-size: 20px;
+  }
+</style>
