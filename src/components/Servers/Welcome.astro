@@ -1,0 +1,80 @@
+---
+import { ServerListing } from "../../data/serverlist.astro";
+
+const servers = ServerListing.servers;
+
+let totalPlayers = 0;
+
+servers.forEach((server) => {
+  totalPlayers += Number(server.playerCount);
+});
+---
+
+<div class="welcome">
+  <div class="description">
+    <h1>Servers</h1>
+    <div class="break"></div>
+    <p>Players Online: {totalPlayers}</p>
+  </div>
+</div>
+
+<style>
+  .welcome {
+    height: 200px;
+    width: 100%;
+    background-image: url("./img/servers.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 25px;
+  }
+  .welcome > .description {
+    display: inline-block;
+    width: 100%;
+    justify-content: center;
+    padding-top: 25px;
+    padding-left: 60px;
+  }
+  .description p {
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 35px;
+    color: var(--white);
+    text-shadow: black 0px 0 20px;
+  }
+  .description h1 {
+    line-height: 60px;
+    font-size: 45px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: black 0px 0 20px;
+  }
+
+  @media (max-width: 992px) {
+    .welcome > .description {
+      display: inline-block;
+      width: 100%;
+      justify-content: center;
+      padding-top: 25px;
+      padding-left: 60px;
+    }
+    .description p {
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-size: 20px;
+      color: var(--white);
+      text-shadow: black 0px 0 20px;
+    }
+    .description h1 {
+      line-height: 60px;
+      font-size: 30px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-shadow: black 0px 0 20px;
+    }
+  }
+</style>

@@ -120,4 +120,134 @@ const { title } = Astro.props;
       width: 1350px;
     }
   }
+
+  @media (max-width: 576px) {
+    .background {
+      margin: 55px 0 0 0;
+    }
+    .row > .background {
+      padding: 0px 0px;
+    }
+    .black-background > .row-content {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .row-content .row-block > .text {
+      flex-direction: column;
+      margin-right: 0px;
+    }
+    .row-content .row-block .text > .text-white {
+      margin-left: 10px;
+    }
+    .black-background .row-content .margin .text > .text-no-bold {
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .background {
+      margin: 55px 0 0 0;
+    }
+    .black-background {
+      padding: 0 0 50px 20px;
+    }
+    .block .text > .text-white {
+      font-size: 14px;
+    }
+    .block .text .text-white i > span {
+      font-size: 12px;
+    }
+    .block .text .text-no-bold {
+      font-size: 14px;
+    }
+    .block .text .text-no-bold > i {
+      font-size: 12px;
+    }
+    .block .text .text-no-bold i > span {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .background {
+      margin: 55px 0 0 0;
+    }
+    .title {
+      font-size: 25px;
+    }
+    .block-content {
+      flex-wrap: wrap;
+    }
+    .block {
+      margin: 0 20px 20px 0;
+    }
+    .block-content:nth-child(2) {
+      margin: 0;
+    }
+    .text > .text-white {
+      font-size: 18px;
+    }
+    .text .text-white i > span {
+      font-size: 13px;
+    }
+    .text > .text-no-bold {
+      font-size: 18px;
+    }
+    .text .text-no-bold > i {
+      font-size: 15px;
+    }
+    .text .text-no-bold i > span {
+      font-size: 13px;
+    }
+    .row-content {
+      text-align: center;
+    }
+    .row-block {
+      display: inline-block;
+      padding: 30px 0px;
+      align-content: center;
+      border: none;
+    }
+    .row-block img {
+      width: 175px;
+      margin-right: 60px;
+      border: none;
+    }
+    .row-block > .text:nth-child(2) {
+      margin-left: 0;
+    }
+  }
+  @media (max-width: 1200px) {
+    .black-background {
+      padding: 0 0 50px 20px;
+    }
+    .block-content > .block img {
+      width: 140px;
+      height: 100px;
+    }
+    .text-white {
+      font-size: 14px;
+    }
+    .text-white i > span {
+      font-size: 11px;
+    }
+    .text-no-bold {
+      font-size: 14px;
+    }
+    .text-no-bold > i {
+      font-size: 11px;
+    }
+    .text-no-bold i > span {
+      font-size: 10px;
+    }
+    .row-content {
+      display: block;
+    }
+  }
+  @media (max-width: 1400px) {
+    .row-block > .text {
+      margin-right: 60px;
+    }
+  }
 </style>

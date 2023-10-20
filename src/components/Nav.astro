@@ -16,11 +16,11 @@ const { active } = Astro.props;
       </div>
       <input type="checkbox" id="toggle" />
       <div class={active}>
-        <a class="btn" href="./index.php">Home</a>
-        <a class="btn" href="./servers.php">Servers</a>
+        <a class="btn" href="./">Home</a>
+        <a class="btn" href="./servers">Servers</a>
         <a class="btn" href="https://docs.r5reloaded.com/">Docs</a>
-        <a class="btn" href="./contributors.php">Contributors</a>
-        <a class="btn" href="./download.php">Download</a>
+        <a class="btn" href="./contributors">Contributors</a>
+        <a class="btn" href="./download">Download</a>
       </div>
       <label class="navbar-toggler" for="toggle">
         <span class="bar"></span>
@@ -82,5 +82,52 @@ const { active } = Astro.props;
   }
   .header input {
     display: none;
+  }
+
+  @media (max-width: 992px) {
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .meniu {
+      display: grid;
+      position: absolute;
+      width: 100%;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: 0.6s;
+      background-color: var(--white);
+      z-index: -1;
+    }
+    .header .navbar-toggler {
+      display: grid !important;
+    }
+    .logo a {
+      border: none;
+    }
+    .meniu > .btn {
+      width: 100%;
+      padding: 20px;
+      border-bottom: 1px solid var(--light);
+    }
+    .header input:checked ~ .meniu {
+      transform: translateY(70%);
+    }
+    .header input:checked ~ .navbar-toggler {
+      margin-top: 20px;
+    }
+    input:checked ~ .navbar-toggler .bar:nth-child(1) {
+      position: absolute;
+      transform: rotate(45deg);
+    }
+    input:checked ~ .navbar-toggler .bar:nth-child(2) {
+      display: none;
+    }
+    input:checked ~ .navbar-toggler .bar:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+    .btn {
+      margin: 0;
+    }
   }
 </style>
