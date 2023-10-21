@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - astro
+      - main
   workflow_dispatch:
 
 jobs:
@@ -18,6 +18,6 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.ASTRO_BRANCH }} && git pull && systemctl stop r5rnode.service && npm run build && systemctl start r5rnode.service && exit"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && systemctl stop r5rnode.service && npm run build && systemctl start r5rnode.service && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
