@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="R5Reloaded">
+  <main>
+    <div class="container" style="padding-top: 0px;">
+      <div class="row">
+        <div class="background">
+          <div class="black-background404">
+            <img src="https://http.cat/404" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .black-background404 {
+    /* width: 100%; */
+    margin-top: 50px;
+    background-color: #1f212200;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .black-background404 img {
+    margin: auto;
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    .black-background404 {
+      /* width: 100%; */
+      margin-top: 50px;
+      background-color: #1f212200;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .black-background404 img {
+      margin: auto;
+      display: block;
+      width: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .black-background404 {
+      /* width: 100%; */
+      margin-top: 50px;
+      background-color: #1f212200;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .black-background404 img {
+      margin: auto;
+      display: block;
+      width: 400px;
+    }
+  }
+</style>
