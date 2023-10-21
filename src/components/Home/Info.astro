@@ -1,65 +1,60 @@
-<div class="black-background">
+<div class="info-background">
   <h3 class="title">Whats R5Reloaded?</h3>
-  <div class="block-content">
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Custom Servers</h1>
-          <h2>Join or create fully custom servers.</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Modding Support</h1>
-          <h2>Modify your game or server however you like.</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Private Matches</h1>
-          <h2>Run around by your self or with friends.</h2>
-        </div>
-      </div>
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Custom Servers</h1>
+      <h2>Join or create fully custom servers.</h2>
     </div>
   </div>
 
-  <div class="block-content">
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Open Source</h1>
-          <h2>Feel free to take a peak at what is going on behind the scenes.</h2>
-        </div>
-      </div>
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Modding Support</h1>
+      <h2>Modify your game or server however you like.</h2>
     </div>
+  </div>
 
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Scripting</h1>
-          <h2>Full access to the games scripting language.</h2>
-        </div>
-      </div>
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Private Matches</h1>
+      <h2>Run around by your self or with friends.</h2>
     </div>
+  </div>
 
-    <div class="items">
-      <div class="item">
-        <div class="descriptionshowcase">
-          <h1>Server List</h1>
-          <h2>Easily join a variety of servers.</h2>
-        </div>
-      </div>
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Open Source</h1>
+      <h2>Feel free to take a peak at what is going on behind the scenes.</h2>
+    </div>
+  </div>
+
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Scripting</h1>
+      <h2>Full access to the games scripting language.</h2>
+    </div>
+  </div>
+
+  <div class="block hover hover-animation item">
+    <div class="descriptionshowcase">
+      <h1>Server List</h1>
+      <h2>Easily join a variety of servers.</h2>
     </div>
   </div>
 </div>
 
 <style>
+  .info-background {
+    height: 100%;
+    width: 100%;
+    padding-bottom: 40px;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 10px 0px 30px 60px;
+    background-color: #1f2122;
+    border-radius: 5px;
+  }
+
   .descriptionshowcase {
     width: 400px;
     height: 100px;
@@ -103,6 +98,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .hover-animation {
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Apply the transition effect */
+  }
+
+  .hover-animation:hover {
+    transform: scale(1.1); /* Apply the scale transformation on hover */
+  }
+  .block {
+    display: inline-block;
+    margin-right: 0px;
+    padding: 0px 0px 10px 0px;
+  }
+  .block img {
+    width: 150px;
+    height: 150px;
+    border-radius: 35px 20px;
+  }
+  .hover {
+    position: relative;
+    width: 330px;
   }
 
   .items {

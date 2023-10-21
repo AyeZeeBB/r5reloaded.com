@@ -5,6 +5,7 @@ import nodejs from '@astrojs/node';
 export default defineConfig({
     build: {
         inlineStylesheets: `always`,
+        format: 'file',
       },
     adapter: nodejs({
       mode: 'standalone' // or 'standalone'
