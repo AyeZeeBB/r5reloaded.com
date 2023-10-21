@@ -11,7 +11,7 @@ const { name, playlist, region, players, minplayers, map } = Astro.props;
 
 import CountryJson from "../../../data/json/countryname.json";
 const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
-const mapimg = "img/maps/" + map.toLowerCase() + ".png";
+const mapimg = "img/maps/" + map.toLowerCase() + ".webp";
 const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";
 ---
 
