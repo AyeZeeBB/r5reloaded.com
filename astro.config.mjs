@@ -7,6 +7,8 @@ export default defineConfig({
         inlineStylesheets: `always`,
         format: 'file',
       },
+      trailingSlash: "never",
+      site: 'https://r5reloaded.com',
     adapter: nodejs({
       mode: 'standalone' // or 'standalone'
     }),
