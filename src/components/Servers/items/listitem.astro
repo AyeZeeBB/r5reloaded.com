@@ -9,7 +9,7 @@ interface Props {
 }
 const { name, playlist, region, players, minplayers, map } = Astro.props;
 
-import CountryJson from "../../data/json/countryname.json";
+import CountryJson from "../../../data/json/countryname.json";
 const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
 const mapimg = "img/maps/" + map.toLowerCase() + ".png";
 const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";

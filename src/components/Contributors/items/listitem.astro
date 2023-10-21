@@ -9,8 +9,8 @@ interface Props {
 const { name, description, githuburl, img } = Astro.props;
 
 //im pretty sure there is a better way to do this, but i couldnt fiqure out how.
-import HasGithub from "./items/github.astro";
-import NoGithub from "./items/nogithub.astro";
+import HasGithub from "./github.astro";
+import NoGithub from "./nogithub.astro";
 
 let Content = NoGithub;
 if (githuburl.length > 0) {
