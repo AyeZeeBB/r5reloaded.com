@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
+import nodejs from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
     build: {
-      inlineStylesheets: `always`,
-      site: 'https://r5reloaded.com',
-        output: 'static',
-        format: 'file'
-    },
+        inlineStylesheets: `always`,
+      },
+    adapter: nodejs({
+      mode: 'standalone' // or 'standalone'
+    }),
+    output: 'server',
   });
