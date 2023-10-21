@@ -20,7 +20,7 @@ jobs:
       - name: connect and pull
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git fetch --all && git reset --hard && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && systemctl stop r5rnode.service && npm run build && systemctl start r5rnode.service && exit"
       - name: stop and build
-        run: systemctl stop r5rnode.service && npm run build && systemctl start r5rnode.service && exit"
+        run: systemctl stop r5rnode.service && npm run build"
       - name: start service
         run: systemctl start r5rnode.service && exit"
       - name: cleanup
