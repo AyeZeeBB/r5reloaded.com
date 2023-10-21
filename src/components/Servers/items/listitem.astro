@@ -1,0 +1,113 @@
+---
+interface Props {
+  name: string;
+  playlist: string;
+  region: string;
+  players: number;
+  minplayers: number;
+  map: string;
+}
+const { name, playlist, region, players, minplayers, map } = Astro.props;
+
+import CountryJson from "../../../data/json/countryname.json";
+const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
+const mapimg = "img/maps/" + map.toLowerCase() + ".png";
+const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";
+---
+
+<div class="row-block">
+  <img src={mapimg} alt="img" width="150" height="100" /><div class="text">
+    <p class="text-white">
+      <img class="regionimg" src={regionimg} title={CountryJson[region]} />
+      {name}
+    </p>
+    <p class="text-no-bold">{playlist}</p><p class="text-no-bold" style={colorcode}>
+      {players}/{minplayers} Players
+    </p>
+  </div>
+</div>
+
+<style>
+  .row-block {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: left;
+    align-items: center;
+  }
+  .row-block img {
+    border-radius: 5px;
+  }
+  .row-block > .text {
+    margin-right: 100px;
+  }
+  .row-block > .text:nth-child(2) {
+    margin-left: 20px;
+  }
+
+  .text-white {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .text-white > i {
+    display: flex;
+    justify-content: center;
+    float: right;
+    color: yellow;
+  }
+  .text-white i > span {
+    margin-left: 5px;
+    margin-top: 3px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .text-white > .regionimg {
+    width: 35px;
+    border-radius: 0px;
+    margin-right: 10px;
+  }
+
+  .text-no-bold {
+    font-size: 16px;
+  }
+  .text-no-bold > i {
+    display: flex;
+    justify-content: center;
+    float: right;
+    color: var(--red);
+  }
+  .text-no-bold i > span {
+    margin-left: 5px;
+    margin-top: 3px;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  @media (max-width: 992px) {
+    .row-block {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      margin-left: 30px;
+    }
+    .row-block img {
+      border-radius: 20px;
+    }
+    .row-block > .text {
+      margin-right: 100px;
+    }
+    .row-block > .text:nth-child(2) {
+      margin-left: 30px;
+    }
+    .text-white > .regionimg {
+      width: 35px;
+      border-radius: 0px;
+      margin-right: 5px;
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Nav from "../components/Nav.astro";
+import Welcome from "../components/Servers/Welcome.astro";
+import ServerList from "../components/Servers/ServersList.astro";
+---
+
+<Layout title="R5Reloaded">
+  <Nav active="servers" />
+  <main>
+    <div class="container" style="padding-top: 0px">
+      <div class="row">
+        <div class="background">
+          <div class="servers">
+            <Welcome />
+            <ServerList />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  githuburl: string;
+  img: string;
+}
+
+const { name, description, githuburl, img } = Astro.props;
+
+//im pretty sure there is a better way to do this, but i couldnt fiqure out how.
+import HasGithub from "./github.astro";
+import NoGithub from "./nogithub.astro";
+
+let Content = NoGithub;
+if (githuburl.length > 0) {
+  Content = HasGithub;
+}
+
+const githuburlsplit = githuburl.split("/");
+const GithubText = githuburl.length > 0 ? "Github: " + githuburlsplit[githuburlsplit.length - 1] : "";
+---
+
+<Content name={name} description={description} githuburl={githuburl} githubtext={GithubText} img={img} />

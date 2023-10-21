@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Nav from "../components/Nav.astro";
+import Welcome from "../components/Download/Welcome.astro";
+import Video from "../components/Download/Video.astro";
+import Text from "../components/Download/Text.astro";
+---
+
+<Layout title="R5Reloaded">
+  <Nav active="download" />
+  <main>
+    <div class="container" style="padding-top: 0px">
+      <div class="row">
+        <div class="background">
+          <Welcome />
+          <Video />
+          <Text />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

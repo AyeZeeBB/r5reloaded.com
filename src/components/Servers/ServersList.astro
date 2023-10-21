@@ -1,0 +1,97 @@
+---
+import ServerItem from "./items/listitem.astro";
+import { ServerListing } from "./items/response.astro";
+
+const servers = ServerListing.servers;
+---
+
+<div class="black-background">
+  <div class="row-content">
+    <br />
+    {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
+  </div>
+</div>
+
+<style>
+  .row-block {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: left;
+    align-items: center;
+  }
+  .row-block img {
+    border-radius: 5px;
+  }
+  .row-block > .text {
+    margin-right: 100px;
+  }
+  .row-block > .text:nth-child(2) {
+    margin-left: 20px;
+  }
+
+  .text-white {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .text-white > i {
+    display: flex;
+    justify-content: center;
+    float: right;
+    color: yellow;
+  }
+  .text-white i > span {
+    margin-left: 5px;
+    margin-top: 3px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .text-white > .regionimg {
+    width: 35px;
+    border-radius: 0px;
+  }
+
+  .text-no-bold {
+    font-size: 16px;
+  }
+  .text-no-bold > i {
+    display: flex;
+    justify-content: center;
+    float: right;
+    color: var(--red);
+  }
+  .text-no-bold i > span {
+    margin-left: 5px;
+    margin-top: 3px;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  @media (max-width: 992px) {
+    .row-block {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      margin-left: 30px;
+    }
+    .row-block img {
+      border-radius: 5px;
+    }
+    .row-block > .text {
+      margin-right: 100px;
+    }
+    .row-block > .text:nth-child(2) {
+      margin-left: 30px;
+    }
+    .text-white > .regionimg {
+      width: 35px;
+      border-radius: 0px;
+      margin-right: 5px;
+    }
+  }
+</style>
