@@ -7,12 +7,13 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![GNU License][license-shield]][license-url]
+![Astro](https://img.shields.io/badge/Astro-grey?style=flat-square&logo=astro)
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/AyeZeeBB/r5reloaded.com">
-    <img src="/img/R5R-Logo-White.gif" alt="Logo" width="241" height="241">
+    <img src="public/img/R5R-Logo-White.gif" alt="Logo" width="241" height="241">
   </a>
 
   <h3 align="center">r5reloaded.com</h3>
@@ -33,6 +34,10 @@
 ## About The Project
 
 R5Reloaded is a Source Engine development package to be used for the game 'Apex Legends'.
+
+### Built With
+
+- [![Astro][astro-shield]][astro-url]
 
 <!-- CONTRIBUTING -->
 
@@ -83,3 +88,5 @@ Project Link: [https://github.com/AyeZeeBB/r5reloaded.com](https://github.com/Ay
 [issues-url]: https://github.com/AyeZeeBB/r5reloaded.com/issues
 [license-shield]: https://img.shields.io/github/license/AyeZeeBB/r5reloaded.com.svg?style=flat-square
 [license-url]: https://github.com/AyeZeeBB/r5reloaded.com/blob/master/LICENSE
+[astro-shield]: https://img.shields.io/badge/Astro-grey?style=for-the-badge&logo=astro
+[astro-url]: https://astro.build/
