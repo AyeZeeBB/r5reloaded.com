@@ -10,6 +10,10 @@ const { active } = Astro.props;
 const getClassName = (section: string) => {
   return active === section ? "activebtn" : "btn";
 };
+
+const getDownloadClassName = (section: string) => {
+  return active === section ? "activedownloadbtn" : "btn";
+};
 ---
 
 <div class="container">
@@ -24,9 +28,8 @@ const getClassName = (section: string) => {
       <div class="navmenu">
         <a class={getClassName("home")} href="./">Home</a>
         <a class={getClassName("servers")} href="./servers">Servers</a>
-        <a class="btn" href="https://docs.r5reloaded.com/">Docs</a>
         <a class={getClassName("contributors")} href="./contributors">Contributors</a>
-        <a class={getClassName("download")} href="./download">Download</a>
+        <a class={getDownloadClassName("download")} href="./download">Download</a>
       </div>
       <label class="navbar-toggler" for="toggle">
         <span class="bar"></span>
@@ -56,30 +59,61 @@ const getClassName = (section: string) => {
   }
 
   .btn {
-    margin-right: 30px;
+    display: flex;
+    height: 25px;
+    padding: 10px;
     font-size: 14px;
-    text-align: center;
-    background-color: transparent;
+    margin-right: 15px;
+    align-items: center;
+    text-transform: capitalize;
     text-decoration: none;
-    color: var(--light);
+    justify-content: center;
+    background-color: transparent;
+    color: var(--white);
+    border-radius: 5px;
+    transition-duration: 0.4s;
     cursor: pointer;
     border: none;
   }
 
   .activebtn {
-    margin-right: 30px;
+    display: flex;
+    height: 25px;
+    padding: 10px;
     font-size: 14px;
-    text-align: center;
-    background-color: transparent;
+    margin-right: 15px;
+    align-items: center;
+    text-transform: capitalize;
     text-decoration: none;
-    color: var(--red);
+    justify-content: center;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 5px;
+    transition-duration: 0.4s;
     cursor: pointer;
     border: none;
-    font-style;
+  }
+
+  .activedownloadbtn {
+    display: flex;
+    height: 25px;
+    padding: 10px;
+    font-size: 14px;
+    margin-right: 15px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: #0f52ba;
+    color: var(--white);
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
   }
 
   .navmenu a:hover {
-    color: var(--red);
+    transform: scale(1.1);
   }
   .header .navbar-toggler {
     display: none;
@@ -109,7 +143,7 @@ const getClassName = (section: string) => {
       position: absolute;
       width: 100%;
       align-items: center;
-      transform: translateY(-100%);
+      transform: translateY(-120%);
       transition: 0.6s;
       background-color: var(--white);
       z-index: -1;
@@ -141,8 +175,43 @@ const getClassName = (section: string) => {
     input:checked ~ .navbar-toggler .bar:nth-child(3) {
       transform: rotate(-45deg);
     }
+
     .btn {
-      margin: 0;
+      display: flex;
+      height: 25px;
+      width: 100%;
+      padding: 20px;
+      font-size: 14px;
+      margin-right: 15px;
+      align-items: center;
+      text-transform: capitalize;
+      text-decoration: none;
+      justify-content: center;
+      background-color: #71797e;
+      color: var(--white);
+      border-radius: 0px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .activebtn {
+      display: flex;
+      height: 25px;
+      width: 100%;
+      padding: 20px;
+      font-size: 14px;
+      margin-right: 0px;
+      align-items: center;
+      text-transform: capitalize;
+      text-decoration: none;
+      justify-content: center;
+      background-color: var(--red);
+      color: var(--white);
+      border-radius: 0px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border: none;
     }
   }
 </style>
