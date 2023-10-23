@@ -3,7 +3,7 @@ import ContributorItem from "./items/listitem.astro";
 import ContributorsJson from "../../data/json/contributors.json";
 ---
 
-<div class="mainbox contribus">
+<div class="contribus">
   <div class="black-background">
     <br />
     {ContributorsJson.map((user) => <ContributorItem name={user.name} description={user.desc} githuburl={user.github} img={user.image} />)}

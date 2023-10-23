@@ -5,15 +5,8 @@ interface Props {
 
 const { active } = Astro.props;
 
-//not sure if this is the right way to do this
-// but it should work for now
-const getClassName = (section: string) => {
-  return active === section ? "activebtn" : "btn";
-};
-
-const getDownloadClassName = (section: string) => {
-  return active === section ? "activedownloadbtn" : "btn";
-};
+const getClassName = (section) => (active === section ? "activebtn" : "btn");
+const getDownloadClassName = (section) => (active === section ? "activedownloadbtn" : "btn");
 ---
 
 <div class="container">

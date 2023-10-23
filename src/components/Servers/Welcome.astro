@@ -28,6 +28,7 @@ servers.forEach((server) => {
     background-position: center center;
     border-radius: 5px;
   }
+
   .welcome > .description {
     display: inline-block;
     width: 100%;
@@ -35,46 +36,33 @@ servers.forEach((server) => {
     padding-top: 25px;
     padding-left: 60px;
   }
-  .description p {
+
+  .description p,
+  .description h1 {
     font-weight: 800;
     margin-bottom: 20px;
-    text-transform: uppercase;
-    font-size: 35px;
-    color: var(--white);
-    text-shadow: black 0px 0 20px;
-  }
-  .description h1 {
-    line-height: 60px;
-    font-size: 45px;
-    margin-bottom: 25px;
     text-transform: uppercase;
     color: var(--white);
     text-shadow: black 0px 0 20px;
   }
 
+  .description p {
+    font-size: 35px;
+  }
+
+  .description h1 {
+    line-height: 60px;
+    font-size: 45px;
+    margin-bottom: 25px;
+  }
+
   @media (max-width: 992px) {
-    .welcome > .description {
-      display: inline-block;
-      width: 100%;
-      justify-content: center;
-      padding-top: 25px;
-      padding-left: 60px;
-    }
     .description p {
-      font-weight: 800;
-      margin-bottom: 20px;
-      text-transform: uppercase;
       font-size: 20px;
-      color: var(--white);
-      text-shadow: black 0px 0 20px;
     }
+
     .description h1 {
-      line-height: 60px;
       font-size: 30px;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      color: var(--white);
-      text-shadow: black 0px 0 20px;
     }
   }
 </style>
