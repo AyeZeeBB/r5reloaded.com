@@ -11,7 +11,7 @@ import EULAJson from "../data/json/temp.json";
 
 const EULA = await response.json();*/
 
-const sections = EULAJson.data.contents.split(/\b(?!13)\d+\./);
+const text = EULAJson.data.contents.replace("\n", "\n");
 ---
 
 <Layout title="R5Reloaded">
@@ -25,13 +25,7 @@ const sections = EULAJson.data.contents.split(/\b(?!13)\d+\./);
             </div>
           </div>
           <div class="eula-background">
-            <p>{sections[1]}</p>
-            <br />
-            <p>1. {sections[2]}</p>
-            <br />
-            <p>2. {sections[3]}</p>
-            <br />
-            <p>3. {sections[4]}</p>
+            <p>{text}</p>
           </div>
         </div>
       </div>
@@ -45,7 +39,6 @@ const sections = EULAJson.data.contents.split(/\b(?!13)\d+\./);
     width: 100%;
     padding-bottom: 40px;
     justify-content: center;
-    text-align: center;
     margin-top: 50px;
     padding: 10px 20px 30px 20px;
     background-color: #1f2122;
@@ -55,6 +48,7 @@ const sections = EULAJson.data.contents.split(/\b(?!13)\d+\./);
   .eula-background > p {
     color: var(--white);
     font-size: 20px;
+    white-space: pre-wrap;
   }
 
   .welcome {
