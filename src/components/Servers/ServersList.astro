@@ -5,9 +5,95 @@ import { ServerListing } from "./items/response.astro";
 const servers = ServerListing.servers;
 ---
 
-<div class="black-background">
-  <div class="row-content">
-    <br />
-    {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
-  </div>
-</div>
+<br />
+<table>
+  <tr>
+    <th class="region"></th>
+    <th class="name">Name</th>
+    <th class="players">Players</th>
+    <th class="gamemode">Gamemode</th>
+    <th class="map">Map</th>
+  </tr>
+  {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
+</table>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: var(--white);
+  }
+
+  td,
+  th {
+    background-color: transparent;
+    border-right: solid 2px var(--dark);
+    border-left: solid 2px var(--dark);
+    text-align: left;
+
+    padding: 8px;
+    height: 20px;
+  }
+
+  tr:nth-of-type(even) {
+    background-color: #2f3335;
+  }
+
+  tr {
+    background-color: #1f2122;
+  }
+
+  .region {
+    width: 1%;
+    min-width: 0;
+    text-align: center;
+    padding: 1px;
+  }
+
+  .name {
+    width: 40%;
+    min-width: 0;
+  }
+
+  .players {
+    width: 5%;
+    min-width: 0px;
+    text-align: center;
+  }
+
+  .gamemode {
+    width: 15%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .map {
+    width: 25%;
+    min-width: 0;
+  }
+
+  @media (max-width: 992px) {
+    .region {
+      display: none;
+    }
+
+    .name {
+      width: 40%;
+      min-width: 0;
+    }
+
+    .players {
+      width: 5%;
+      min-width: 0px;
+      text-align: center;
+    }
+
+    .gamemode {
+      display: none;
+    }
+
+    .map {
+      display: none;
+    }
+  }
+</style>

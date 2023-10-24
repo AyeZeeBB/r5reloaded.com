@@ -13,101 +13,166 @@ import CountryJson from "../../../data/json/countryname.json";
 const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
 const mapimg = "img/maps/" + map.toLowerCase() + ".webp";
 const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";
+
+function GetGamemode(playlist) {
+  switch (playlist) {
+    case "fs_dm":
+      return "TDM";
+    case "fs_prophunt":
+      return "Prophunt";
+    case "fs_1v1":
+      return "1v1";
+    case "fs_duckhunt":
+      return "Duckhunt";
+    case "fs_matlejumppractice":
+      return "Mantle Jump";
+    case "custom_tdm":
+      return "TDM";
+    case "custom_ctf":
+      return "Capture The Flag";
+    case "survival":
+      return "Survival";
+    case "fs_movementgym":
+      return "Movement Gym";
+    case "fs_survival_solos":
+      return "BR Solo";
+    default:
+      return playlist;
+  }
+}
+
+function GetMapName(mapname) {
+  switch (mapname) {
+    case "mp_rr_canyonlands_staging":
+      return "Firing Range";
+    case "mp_rr_aqueduct":
+      return "Overflow";
+    case "mp_rr_aqueduct_night":
+      return "Overflow After Dark";
+    case "mp_rr_ashs_redemption":
+      return "Ashs Redemption";
+    case "mp_rr_canyonlands_64k_x_64k":
+      return "Kings Canyon S1";
+    case "mp_rr_canyonlands_mu1":
+      return "Kings Canyon S2";
+    case "mp_rr_canyonlands_mu1_night":
+      return "Kings Canyon S2 After Dark";
+    case "mp_rr_desertlands_64k_x_64k":
+      return "Worlds Edge";
+    case "mp_rr_desertlands_64k_x_64k_nx":
+      return "Worlds Edge After Dark";
+    case "mp_rr_desertlands_64k_x_64k_tt":
+      return "Worlds Edge Mirage Voyage";
+    case "mp_rr_arena_composite":
+      return "Drop Off";
+    case "mp_rr_arena_skygarden":
+      return "Encore";
+    case "mp_rr_party_crasher":
+      return "Party Crasher";
+    case "mp_lobby":
+      return "Lobby";
+    default:
+      return mapname;
+  }
+}
 ---
 
-<div class="row-block">
-  <img src={mapimg} alt="img" width="150" height="100" /><div class="text">
-    <p class="text-white">
-      <img class="regionimg" src={regionimg} title={CountryJson[region]} />
-      {name}
-    </p>
-    <p class="text-no-bold">{playlist}</p><p class="text-no-bold" style={colorcode}>
-      {players}/{minplayers} Players
-    </p>
-  </div>
-</div>
+<tr>
+  <td class="region"><img class="regionimg" src={regionimg} title={CountryJson[region]} /></td>
+  <td class="name">{name}</td>
+  <td class="players">{players}/{minplayers}</td>
+  <td class="gamemode">{GetGamemode(playlist)}</td>
+  <td class="map"><img class="regionimg" src={mapimg} title={GetMapName(map)} />{GetMapName(map)}</td>
+</tr>
 
 <style>
-  .row-block {
-    display: flex;
-    padding: 10px 0px;
-    justify-content: left;
-    align-items: center;
-  }
-  .row-block img {
-    border-radius: 5px;
-  }
-  .row-block > .text {
-    margin-right: 100px;
-  }
-  .row-block > .text:nth-child(2) {
-    margin-left: 20px;
-  }
-
-  .text-white {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-  }
-  .text-white > i {
-    display: flex;
-    justify-content: center;
-    float: right;
-    color: yellow;
-  }
-  .text-white i > span {
-    margin-left: 5px;
-    margin-top: 3px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
+  table {
+    border-collapse: collapse;
+    width: 100%;
     color: var(--white);
   }
 
-  .text-white > .regionimg {
-    width: 35px;
-    border-radius: 0px;
+  td,
+  th {
+    background-color: transparent;
+    border-right: solid 2px var(--dark);
+    border-left: solid 2px var(--dark);
+    text-align: left;
+
+    padding: 8px;
+    height: 20px;
+  }
+
+  tr:nth-of-type(even) {
+    background-color: #2f3335;
+  }
+
+  tr {
+    background-color: #1f2122;
+  }
+
+  .region {
+    width: 1%;
+    min-width: 0;
+    text-align: center;
+    padding: 2px;
+  }
+
+  .region > img {
+    width: 50px;
+    border-radius: 2px;
+  }
+
+  .name {
+    width: 60%;
+    min-width: 0;
+  }
+
+  .players {
+    width: 5%;
+    min-width: 0px;
+    text-align: center;
+  }
+
+  .gamemode {
+    width: 15%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .map {
+    width: 25%;
+    min-width: 0;
+  }
+
+  .map > img {
+    width: 49px;
     margin-right: 10px;
-  }
-
-  .text-no-bold {
-    font-size: 16px;
-  }
-  .text-no-bold > i {
-    display: flex;
-    justify-content: center;
-    float: right;
-    color: var(--red);
-  }
-  .text-no-bold i > span {
-    margin-left: 5px;
-    margin-top: 3px;
-    font-size: 12px;
-    text-decoration: none;
-    color: var(--white);
+    border-radius: 3px;
   }
 
   @media (max-width: 992px) {
-    .row-block {
-      display: block;
-      justify-content: center;
-      align-items: center;
-      margin-left: 30px;
+    .region {
+      display: none;
     }
-    .row-block img {
-      border-radius: 20px;
+
+    .name {
+      width: 40%;
+      min-width: 0;
     }
-    .row-block > .text {
-      margin-right: 100px;
+
+    .players {
+      width: 5%;
+      min-width: 0px;
+      text-align: center;
     }
-    .row-block > .text:nth-child(2) {
-      margin-left: 30px;
+
+    .gamemode {
+      display: none;
     }
-    .text-white > .regionimg {
-      width: 35px;
-      border-radius: 0px;
-      margin-right: 5px;
+
+    .map {
+      display: none;
     }
   }
 </style>
