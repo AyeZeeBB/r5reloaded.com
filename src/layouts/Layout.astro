@@ -32,41 +32,7 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Add loaded class to div with class "test" once the page is fully loaded
-    document.querySelector("div.transition-effect").classList.add("loaded");
-  });
-
-  document.querySelectorAll("a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      // Apply transitioning class to div with class "test"
-      document.querySelector("div.transition-effect").classList.add("transitioning");
-
-      // Delay the navigation to allow the fade out transition to occur
-      setTimeout(() => {
-        window.location.href = this.href;
-      }, 150); // Adjust timing as needed
-    });
-  });
-</script>
-
 <style is:global>
-  div.transition-effect {
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out;
-  }
-
-  div.transition-effect.loaded {
-    opacity: 1;
-  }
-
-  div.transition-effect.transitioning {
-    opacity: 0;
-  }
-
   :root {
     --white: #fff;
     --red: #d81e22;
