@@ -6,16 +6,83 @@ const servers = ServerListing.servers;
 ---
 
 <br /><br />
-<table>
+<input type="text" id="searchInput" placeholder="Search for servers..." />
+
+<table class="sortable">
   <tr>
-    <th class="region"></th>
-    <th class="name">Name</th>
-    <th class="players">Players</th>
-    <th class="gamemode">Gamemode</th>
-    <th class="map">Map</th>
+    <th class="region"><span class="sort-arrow"></span></th>
+    <th class="name">Name <span class="sort-arrow"></span></th>
+    <th class="players">Players <span class="sort-arrow"></span></th>
+    <th class="gamemode">Gamemode <span class="sort-arrow"></span></th>
+    <th class="map">Map <span class="sort-arrow"></span></th>
   </tr>
   {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
 </table>
+
+<script is:inline>
+$(document).ready(function () {
+  $(".sortable th").click(function () {
+    var table = $(this).parents("table").eq(0);
+    var rows = table
+      .find("tr:gt(0)")
+      .toArray()
+      .sort(comparer($(this).index()));
+    this.asc = !this.asc;
+    if (!this.asc) {
+      rows = rows.reverse();
+    }
+    for (var i = 0; i < rows.length; i++) {
+      table.append(rows[i]);
+    }
+
+    // Reset arrow icons
+    table.find(".sort-arrow").html("");
+    $(this)
+      .find(".sort-arrow")
+      .html(this.asc ? "&#9650;" : "&#9660;");
+  });
+
+  function comparer(index) {
+    return function (a, b) {
+      var valA = getCellValue(a, index),
+        valB = getCellValue(b, index);
+      if (index === 2) {
+        // Check if sorting by "Players" column
+        valA = parseInt(valA.split("/")[0]);
+        valB = parseInt(valB.split("/")[0]);
+      }
+      return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB);
+    };
+  }
+
+  function getCellValue(row, index) {
+    return $(row).children("td").eq(index).text();
+  }
+
+  $("#searchInput").on("keyup", function () {
+    var input, filter, table, tr, td, i, txtValue;
+    input = $(this);
+    filter = input.val().toUpperCase();
+    table = $("table.sortable");
+    tr = table.find("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td");
+      for (var j = 0; j < td.length; j++) {
+        if (td[j]) {
+          txtValue = td[j].textContent || td[j].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            break;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  });
+});
+</script>
 
 <style>
   table {
@@ -43,6 +110,18 @@ const servers = ServerListing.servers;
     background-color: #1f2122;
   }
 
+  input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+    border: 1px solid #ffffff;
+    background-color: #2f3335;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
   .region {
     width: 1%;
     min-width: 0;
@@ -56,7 +135,7 @@ const servers = ServerListing.servers;
   }
 
   .players {
-    width: 5%;
+    width: 10%;
     min-width: 0px;
     text-align: center;
   }
@@ -68,7 +147,7 @@ const servers = ServerListing.servers;
   }
 
   .map {
-    width: 25%;
+    width: 35% !important;
     min-width: 0;
   }
 
@@ -78,7 +157,7 @@ const servers = ServerListing.servers;
     }
 
     .name {
-      width: 40%;
+      width: 35%;
       min-width: 0;
     }
 
