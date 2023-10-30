@@ -64,7 +64,7 @@ Distributed under the GNU Affero General Public License v3.0. See `LICENSE.md` f
 
 ## Contact
 
-[@AyeZeeBB](https://github.com/AyeZeeBB) - [ ] / [AyeZee#6969](https://discord.com/users/784643541045215262)
+[@AyeZeeBB](https://github.com/AyeZeeBB) - [AyeZee#6969](https://discord.com/users/784643541045215262)
 
 Project Link: [https://github.com/AyeZeeBB/r5reloaded.com](https://github.com/AyeZeeBB/r5reloaded.com)
 
@@ -72,7 +72,7 @@ Project Link: [https://github.com/AyeZeeBB/r5reloaded.com](https://github.com/Ay
 
 ## Acknowledgments
 
-- [GNU Affero General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+- [GNU Affero General Public License v3.0](https://choosealicense.com/licenses/agpl-3.0/)
 - [Img Shields](https://shields.io)
 
 <!-- MARKDOWN LINKS & IMAGES -->
