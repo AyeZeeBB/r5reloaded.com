@@ -1,9 +1,31 @@
 ---
 import ServerItem from "./items/listitem.astro";
-import { ServerListing } from "./items/response.astro";
 
+const response = await fetch("https://ms.r5reloaded.com/servers", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+});
+
+const ServerListing = await response.json();
+console.log(ServerListing);
 const servers = ServerListing.servers;
+
+let totalPlayers = 0;
+
+servers.forEach((server) => {
+  totalPlayers += Number(server.playerCount);
+});
+
+export const prerender = false;
 ---
+
+<div class="welcome">
+  <div class="description">
+    <h1>Servers</h1>
+    <div class="break"></div>
+    <p>Players Online: {totalPlayers}</p>
+  </div>
+</div>
 
 <br /><br />
 <input type="text" id="searchInput" placeholder="Search for servers..." />
@@ -19,69 +41,101 @@ const servers = ServerListing.servers;
   {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
 </table>
 
+<div id="pagination"></div>
+
 <script is:inline>
-$(document).ready(function () {
-  $(".sortable th").click(function () {
-    var table = $(this).parents("table").eq(0);
-    var rows = table
-      .find("tr:gt(0)")
-      .toArray()
-      .sort(comparer($(this).index()));
-    this.asc = !this.asc;
-    if (!this.asc) {
-      rows = rows.reverse();
-    }
-    for (var i = 0; i < rows.length; i++) {
-      table.append(rows[i]);
-    }
+  $(document).ready(function () {
+    var itemsPerPage = 100; // Set the number of items per page
+    var currentPage = 1;
 
-    // Reset arrow icons
-    table.find(".sort-arrow").html("");
-    $(this)
-      .find(".sort-arrow")
-      .html(this.asc ? "&#9650;" : "&#9660;");
-  });
+    function showPage(page) {
+      var table = $("table.sortable");
+      var rows = table.find("tr:gt(0)");
+      var totalPages = Math.ceil(rows.length / itemsPerPage);
 
-  function comparer(index) {
-    return function (a, b) {
-      var valA = getCellValue(a, index),
-        valB = getCellValue(b, index);
-      if (index === 2) {
-        // Check if sorting by "Players" column
-        valA = parseInt(valA.split("/")[0]);
-        valB = parseInt(valB.split("/")[0]);
+      rows.hide();
+      rows.slice((page - 1) * itemsPerPage, page * itemsPerPage).show();
+
+      // Update pagination links
+      var pagination = $("#pagination");
+      pagination.empty();
+
+      for (var i = 1; i <= totalPages; i++) {
+        //pagination.append('<a href="#" class="page-link btn" data-page="' + i + '">' + i + "</a> ");
       }
-      return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB);
-    };
-  }
 
-  function getCellValue(row, index) {
-    return $(row).children("td").eq(index).text();
-  }
+      pagination.find(".page-link").click(function (e) {
+        e.preventDefault();
+        currentPage = parseInt($(this).data("page"));
+        showPage(currentPage);
+      });
+    }
 
-  $("#searchInput").on("keyup", function () {
-    var input, filter, table, tr, td, i, txtValue;
-    input = $(this);
-    filter = input.val().toUpperCase();
-    table = $("table.sortable");
-    tr = table.find("tr");
+    showPage(currentPage);
 
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td");
-      for (var j = 0; j < td.length; j++) {
-        if (td[j]) {
-          txtValue = td[j].textContent || td[j].innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-            break;
-          } else {
-            tr[i].style.display = "none";
+    $(".sortable th").click(function () {
+      var table = $(this).parents("table").eq(0);
+      var rows = table
+        .find("tr:gt(0)")
+        .toArray()
+        .sort(comparer($(this).index()));
+      this.asc = !this.asc;
+      if (!this.asc) {
+        rows = rows.reverse();
+      }
+      for (var i = 0; i < rows.length; i++) {
+        table.append(rows[i]);
+      }
+
+      // Reset arrow icons
+      table.find(".sort-arrow").html("");
+      $(this)
+        .find(".sort-arrow")
+        .html(this.asc ? "&#9650;" : "&#9660;");
+
+      showPage(currentPage); // Reapply pagination after sorting
+    });
+
+    function comparer(index) {
+      return function (a, b) {
+        var valA = getCellValue(a, index),
+          valB = getCellValue(b, index);
+        if (index === 2) {
+          // Check if sorting by "Players" column
+          valA = parseInt(valA.split("/")[0]);
+          valB = parseInt(valB.split("/")[0]);
+        }
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB);
+      };
+    }
+
+    function getCellValue(row, index) {
+      return $(row).children("td").eq(index).text();
+    }
+
+    $("#searchInput").on("keyup", function () {
+      var input, filter, table, tr, td, i, txtValue;
+      input = $(this);
+      filter = input.val().toUpperCase();
+      table = $("table.sortable");
+      tr = table.find("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < td.length; j++) {
+          if (td[j]) {
+            txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+              break;
+            } else {
+              tr[i].style.display = "none";
+            }
           }
         }
       }
-    }
+    });
   });
-});
 </script>
 
 <style>
@@ -120,6 +174,25 @@ $(document).ready(function () {
     color: #ffffff;
     padding: 10px;
     margin-bottom: 10px;
+  }
+
+  .btn {
+    display: flex;
+    width: 50px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 14px;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--white);
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
   }
 
   .region {
@@ -173,6 +246,53 @@ $(document).ready(function () {
 
     .map {
       display: none;
+    }
+  }
+
+  .welcome {
+    height: 200px;
+    width: 100%;
+    background-image: url("./img/servers.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+  }
+
+  .welcome > .description {
+    display: inline-block;
+    width: 100%;
+    justify-content: center;
+    padding-top: 25px;
+    padding-left: 60px;
+  }
+
+  .description p,
+  .description h1 {
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: black 0px 0 20px;
+  }
+
+  .description p {
+    font-size: 35px;
+  }
+
+  .description h1 {
+    line-height: 60px;
+    font-size: 45px;
+    margin-bottom: 25px;
+  }
+
+  @media (max-width: 992px) {
+    .description p {
+      font-size: 20px;
+    }
+
+    .description h1 {
+      font-size: 30px;
     }
   }
 </style>
