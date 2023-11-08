@@ -28,9 +28,11 @@ export const prerender = false;
 </div>
 
 <br /><br />
-<input type="text" id="searchInput" placeholder="Search for servers..." />
-
-<table class="sortable">
+<div class="button-container">
+  <input type="text" id="searchInput" placeholder="Search for servers..." />
+  <button id="refreshButton">Refresh</button>
+</div>
+<table id="ServerTable" class="sortable">
   <tr>
     <th class="region"><span class="sort-arrow"></span></th>
     <th class="name">Name <span class="sort-arrow"></span></th>
@@ -40,6 +42,8 @@ export const prerender = false;
   </tr>
   {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
 </table>
+
+<div id="refreshingText" class="refreshtext" style="display: none;">Refreshing servers...</div>
 
 <div id="pagination"></div>
 
@@ -113,7 +117,7 @@ export const prerender = false;
       return $(row).children("td").eq(index).text();
     }
 
-    $("#searchInput").on("keyup", function () {
+    $("#searchInput").click(function () {
       var input, filter, table, tr, td, i, txtValue;
       input = $(this);
       filter = input.val().toUpperCase();
@@ -135,37 +139,161 @@ export const prerender = false;
         }
       }
     });
+
+    $("#refreshButton").on("click", async function () {
+      const table = $("table.sortable");
+      const rows = table.find("tr:gt(0)");
+      rows.remove(); // Remove existing rows
+
+      $(".welcome p").text(`Players Online: ---`);
+
+      $("#refreshingText").show();
+      $("#ServerTable").hide();
+
+      await sleep(1000);
+
+      // Make a new API request
+      var response = await fetch("https://ms.r5reloaded.com/servers", {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+      });
+
+      var CountryData = await fetch("./data/json/countryname.json");
+      var CountryJson = await CountryData.json();
+
+      console.log(response);
+
+      var ServerListing = await response.json();
+      var servers = ServerListing.servers;
+
+      let totalPlayers = 0;
+
+      servers.forEach((server) => {
+        totalPlayers += Number(server.playerCount);
+      });
+
+      // Update the totalPlayers in the DOM
+      $(".welcome p").text(`Players Online: ${totalPlayers}`);
+
+      servers.forEach((server) => {
+        const serverItem = `<tr>
+  <td class="region"><img class="regionimg" src="img/flags/${server.region.toLowerCase()}.svg" title="${CountryJson[server.region]}" /></td>
+  <td class="name">${server.name}</td>
+  <td class="players">${server.playerCount}/${server.maxPlayers}</td>
+  <td class="gamemode">${GetGamemode(server.playlist)}</td>
+  <td class="map"><img class="regionimg" src="img/maps/${server.map.toLowerCase()}.webp" title="${GetMapName(server.map)}" />${GetMapName(server.map)}</td>
+</tr>`;
+        table.append(serverItem);
+
+        $("#ServerTable").show();
+        $("#refreshingText").hide();
+      });
+    });
+
+    function GetGamemode(playlist) {
+      switch (playlist) {
+        case "fs_dm":
+          return "TDM";
+        case "fs_prophunt":
+          return "Prophunt";
+        case "fs_1v1":
+          return "1v1";
+        case "fs_duckhunt":
+          return "Duckhunt";
+        case "fs_mantlejumppractice":
+          return "Mantle Jump";
+        case "fs_infected":
+          return "Infected";
+        case "custom_tdm":
+          return "TDM";
+        case "custom_ctf":
+          return "Capture The Flag";
+        case "survival":
+          return "Battle Royal";
+        case "fs_movementgym":
+          return "Movement Gym";
+        case "fs_survival_solos":
+          return "BR Solo";
+        default:
+          return playlist;
+      }
+    }
+
+    function GetMapName(mapname) {
+      switch (mapname) {
+        case "mp_rr_canyonlands_staging":
+          return "Firing Range";
+        case "mp_rr_aqueduct":
+          return "Overflow";
+        case "mp_rr_aqueduct_night":
+          return "Overflow After Dark";
+        case "mp_rr_ashs_redemption":
+          return "Ashs Redemption";
+        case "mp_rr_canyonlands_64k_x_64k":
+          return "Kings Canyon S1";
+        case "mp_rr_canyonlands_mu1":
+          return "Kings Canyon S2";
+        case "mp_rr_canyonlands_mu1_night":
+          return "Kings Canyon S2 After Dark";
+        case "mp_rr_desertlands_64k_x_64k":
+          return "Worlds Edge";
+        case "mp_rr_desertlands_64k_x_64k_nx":
+          return "Worlds Edge After Dark";
+        case "mp_rr_desertlands_64k_x_64k_tt":
+          return "Worlds Edge Mirage Voyage";
+        case "mp_rr_arena_composite":
+          return "Drop Off";
+        case "mp_rr_arena_skygarden":
+          return "Encore";
+        case "mp_rr_party_crasher":
+          return "Party Crasher";
+        case "mp_lobby":
+          return "Lobby";
+        default:
+          return mapname;
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
   });
 </script>
 
 <style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    color: var(--white);
+  .refreshtext {
+    text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 2px;
+    background: rgba(0, 0, 0, 0.2);
+    height: 40px;
   }
 
-  td,
-  th {
-    background-color: transparent;
-    border-right: solid 2px var(--dark);
-    border-left: solid 2px var(--dark);
-    text-align: left;
-
-    padding: 8px;
-    height: 20px;
+  .button-container {
+    display: flex;
   }
 
-  tr:nth-of-type(even) {
+  button {
+    width: 10%;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+    border: 1px solid #ffffff;
     background-color: #2f3335;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
   }
 
-  tr {
-    background-color: #1f2122;
+  button:hover {
+    background-color: #6e787c;
   }
 
   input {
-    width: 100%;
+    width: 89%;
     height: 40px;
     border-radius: 5px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
@@ -193,60 +321,6 @@ export const prerender = false;
     transition-duration: 0.4s;
     cursor: pointer;
     border: none;
-  }
-
-  .region {
-    width: 1%;
-    min-width: 0;
-    text-align: center;
-    padding: 1px;
-  }
-
-  .name {
-    width: 40%;
-    min-width: 0;
-  }
-
-  .players {
-    width: 10%;
-    min-width: 0px;
-    text-align: center;
-  }
-
-  .gamemode {
-    width: 15%;
-    min-width: 0;
-    text-align: center;
-  }
-
-  .map {
-    width: 35% !important;
-    min-width: 0;
-  }
-
-  @media (max-width: 992px) {
-    .region {
-      display: none;
-    }
-
-    .name {
-      width: 35%;
-      min-width: 0;
-    }
-
-    .players {
-      width: 5%;
-      min-width: 0px;
-      text-align: center;
-    }
-
-    .gamemode {
-      display: none;
-    }
-
-    .map {
-      display: none;
-    }
   }
 
   .welcome {
@@ -293,6 +367,106 @@ export const prerender = false;
 
     .description h1 {
       font-size: 30px;
+    }
+
+    input {
+      width: 83%;
+    }
+
+    button {
+      width: 15%;
+    }
+  }
+</style>
+
+<style is:inline>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    color: var(--white);
+  }
+
+  td,
+  th {
+    background-color: transparent;
+    border-right: solid 2px var(--dark);
+    border-left: solid 2px var(--dark);
+    text-align: left;
+
+    padding: 8px;
+    height: 20px;
+  }
+
+  tr:nth-of-type(even) {
+    background-color: #2f3335;
+  }
+
+  tr {
+    background-color: #1f2122;
+  }
+
+  .region {
+    width: 1%;
+    min-width: 0;
+    text-align: center;
+    padding: 2px;
+  }
+
+  .region > img {
+    width: 50px;
+    border-radius: 2px;
+  }
+
+  .name {
+    width: 52%;
+    min-width: 0;
+  }
+
+  .players {
+    width: 5%;
+    min-width: 0px;
+    text-align: center;
+  }
+
+  .gamemode {
+    width: 15%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .map {
+    width: 35%;
+    min-width: 0;
+  }
+
+  .map > img {
+    width: 49px;
+    margin-right: 10px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 992px) {
+    .region {
+      display: none;
+    }
+
+    .name {
+      width: 40%;
+      min-width: 0;
+    }
+
+    .players {
+      width: 5%;
+      min-width: 0px;
+      text-align: center;
+    }
+
+    .gamemode {
+      display: none;
+    }
+
+    .map {
+      display: none;
     }
   }
 </style>
