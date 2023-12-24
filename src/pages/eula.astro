@@ -44,17 +44,20 @@ import Layout from "../layouts/Layout.astro";
             body: JSON.stringify(postData), // Convert the data to JSON format
         };
 
-        // Make the POST request using fetch
         fetch(url, options)
             .then(response => response.json()) // Assuming the response is in JSON format
             .then(data => {
-                // Insert the response into the <p> element
+                // Extract the "contents" value from the response
+                const contents = data?.data?.contents;
+
+                // Insert the "contents" into the <p> element
                 const responseParagraph = document.getElementById('responseParagraph');
-                responseParagraph.textContent = JSON.stringify(data, null, 2); // Displaying the JSON response with indentation
+                responseParagraph.textContent = contents || 'No contents found';
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+
     });
 </script>
 
