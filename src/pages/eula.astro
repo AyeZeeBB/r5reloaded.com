@@ -2,8 +2,6 @@
 export const prerender = false;
 
 import Layout from "../layouts/Layout.astro";
-
-
 ---
 
 <Layout title="R5Reloaded">
@@ -17,7 +15,7 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
           <div class="eula-background">
-            <p></p>
+            <p id="responseParagraph"></p>
           </div>
         </div>
       </div>
@@ -26,9 +24,38 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
-console.log('{response}');
-console.log('{response.status}');
-console.log('{EULA.data.contents}');
+    document.addEventListener('DOMContentLoaded', function () {
+        // URL of the POST request
+        const url = 'https://ms.r5reloaded.com/eula?language=english';
+
+        // Data to be sent in the POST request (if any)
+        const postData = {
+            // Your data goes here
+            key1: 'value1',
+            key2: 'value2'
+        };
+
+        // Configure the fetch options
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Set the content type according to your needs
+            },
+            body: JSON.stringify(postData), // Convert the data to JSON format
+        };
+
+        // Make the POST request using fetch
+        fetch(url, options)
+            .then(response => response.json()) // Assuming the response is in JSON format
+            .then(data => {
+                // Insert the response into the <p> element
+                const responseParagraph = document.getElementById('responseParagraph');
+                responseParagraph.textContent = JSON.stringify(data, null, 2); // Displaying the JSON response with indentation
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
 </script>
 
 <style>
