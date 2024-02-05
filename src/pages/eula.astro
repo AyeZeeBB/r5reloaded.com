@@ -15,7 +15,7 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
           <div class="eula-background">
-            <p id="responseParagraph"></p>
+            <p id="responseParagraph">Fetching EULA...</p>
           </div>
         </div>
       </div>
@@ -24,41 +24,29 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // URL of the POST request
-        const url = 'https://ms.r5reloaded.com/eula?language=english';
+  document.addEventListener("DOMContentLoaded", function () {
+    const url = "https://ms.r5reloaded.com/eula?language=english";
 
-        // Data to be sent in the POST request (if any)
-        const postData = {
-            // Your data goes here
-            key1: 'value1',
-            key2: 'value2'
-        };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-        // Configure the fetch options
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // Set the content type according to your needs
-            },
-            body: JSON.stringify(postData), // Convert the data to JSON format
-        };
-
-        fetch(url, options)
-            .then(response => response.json()) // Assuming the response is in JSON format
-            .then(data => {
-                // Extract the "contents" value from the response
-                const contents = data?.data?.contents;
-
-                // Insert the "contents" into the <p> element
-                const responseParagraph = document.getElementById('responseParagraph');
-                responseParagraph.textContent = contents || 'No contents found';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
-    });
+    fetch(url, options)
+      .then((response) => response.json()) // Assuming the response is in JSON format
+      .then((data) => {
+        const contents = data?.data?.contents;
+        const responseParagraph = document.getElementById("responseParagraph");
+        responseParagraph.textContent = contents || "No contents found";
+      })
+      .catch((error) => {
+        const responseParagraph = document.getElementById("responseParagraph");
+        responseParagraph.textContent = "Error getting EULA. Please try again later.";
+        console.error("Error:", error);
+      });
+  });
 </script>
 
 <style>

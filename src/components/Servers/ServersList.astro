@@ -45,7 +45,9 @@ export const prerender = false;
 
 <div id="refreshingText" class="refreshtext" style="display: none;">Refreshing servers...</div>
 
-<div id="pagination"></div>
+<div class="pagination" id="pagination">
+  <button class="page-link" data-page="' + i + '" style="width: 5%; margin-left: 10px; height: 30px; border-radius: 5px; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06); border: 1px solid #ffffff; background-color: #2f3335; color: #ffffff; text-align: center;margin-bottom: 5px; text-decoration: none;">' + i + "</button>
+</div>
 
 <script is:inline>
   $(document).ready(function () {
@@ -65,7 +67,7 @@ export const prerender = false;
       pagination.empty();
 
       for (var i = 1; i <= totalPages; i++) {
-        //pagination.append('<a href="#" class="page-link btn" data-page="' + i + '">' + i + "</a> ");
+        //pagination.append('<button href="#" class="page-link" data-page="' + i + '" style="width: 5%; margin-left: 10px; height: 30px; border-radius: 5px; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06); border: 1px solid #ffffff; background-color: #2f3335; color: #ffffff; text-align: center;margin-bottom: 5px; text-decoration: none;">' + i + "</button>");
       }
 
       pagination.find(".page-link").click(function (e) {
@@ -303,24 +305,27 @@ export const prerender = false;
     padding: 10px;
     margin-bottom: 10px;
   }
-
-  .btn {
+  .pagination {
     display: flex;
-    width: 50px;
-    height: 45px;
-    margin-top: 20px;
-    padding: 20px;
-    font-size: 14px;
-    align-items: center;
-    text-transform: capitalize;
-    text-decoration: none;
     justify-content: center;
-    background-color: var(--white);
-    color: var(--white);
+    margin-top: 20px;
+  }
+
+  .pagination a {
+    width: 10%;
+    margin-left: 10px;
+    height: 40px;
     border-radius: 5px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border: none;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+    border: 1px solid #ffffff;
+    background-color: #2f3335;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .page-link button:hover {
+    background-color: #6e787c;
   }
 
   .welcome {
