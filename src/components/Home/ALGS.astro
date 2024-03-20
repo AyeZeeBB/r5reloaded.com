@@ -26,12 +26,35 @@
 
   .algs > p {
     display: block;
-    padding: 32px 256px;
     font-size: 15px;
     color: rgb(255, 255, 255);
     text-align: center;
     font-weight: 1000;
     font-style: bold;
+  }
+
+  @media (min-width: 425px) {
+    .algs > p {
+      padding: 32px 32px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .algs > p {
+      padding: 32px 64px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .algs > p {
+      padding: 32px 128px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .algs > p {
+      padding: 32px 256px;
+    }
   }
 
   .algs > h1 {
