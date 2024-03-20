@@ -11,8 +11,19 @@ const { name, playlist, region, players, minplayers, map } = Astro.props;
 
 import CountryJson from "../../../data/json/countryname.json";
 const regionimg = "img/flags/" + region.toLowerCase() + ".svg";
-const mapimg = "img/maps/" + map.toLowerCase() + ".webp";
+const mapimg = GetMapImage(map.toLowerCase());
 const colorcode = players > 0 ? "color: var(--green);" : "color: var(--red);";
+
+const GetColorCode = (str: string): [string, string] => {
+  const colorMatch = str.match(/\^([0-9A-F]{6})/i);
+  if (colorMatch) {
+    const withoutColorCode = str.replace(/\^([0-9A-F]{8})/i, "");
+    return [`color: #${colorMatch[1]};`, withoutColorCode];
+  }
+  return ["", str];
+};
+
+const [colorcode2, serverName] = GetColorCode(name);
 
 function GetGamemode(playlist) {
   switch (playlist) {
@@ -40,6 +51,41 @@ function GetGamemode(playlist) {
       return "BR Solo";
     default:
       return playlist;
+  }
+}
+
+function GetMapImage(mapname) {
+  switch (mapname) {
+    case "mp_rr_canyonlands_staging":
+      return "img/maps/mp_rr_canyonlands_staging.webp";
+    case "mp_rr_aqueduct":
+      return "img/maps/mp_rr_aqueduct.webp";
+    case "mp_rr_aqueduct_night":
+      return "img/maps/mp_rr_aqueduct_night.webp";
+    case "mp_rr_ashs_redemption":
+      return "img/maps/mp_rr_ashs_redemption.webp";
+    case "mp_rr_canyonlands_64k_x_64k":
+      return "img/maps/mp_rr_canyonlands_64k_x_64k.webp";
+    case "mp_rr_canyonlands_mu1":
+      return "img/maps/mp_rr_canyonlands_mu1.webp";
+    case "mp_rr_canyonlands_mu1_night":
+      return "img/maps/mp_rr_canyonlands_mu1_night.webp";
+    case "mp_rr_desertlands_64k_x_64k":
+      return "img/maps/mp_rr_desertlands_64k_x_64k.webp";
+    case "mp_rr_desertlands_64k_x_64k_nx":
+      return "img/maps/mp_rr_desertlands_64k_x_64k_nx.webp";
+    case "mp_rr_desertlands_64k_x_64k_tt":
+      return "img/maps/mp_rr_desertlands_64k_x_64k_tt.webp";
+    case "mp_rr_arena_composite":
+      return "img/maps/mp_rr_arena_composite.webp";
+    case "mp_rr_arena_skygarden":
+      return "img/maps/mp_rr_arena_skygarden.webp";
+    case "mp_rr_party_crasher":
+      return "img/maps/mp_rr_party_crasher.webp";
+    case "mp_lobby":
+      return "img/maps/mp_lobby.webp";
+    default:
+      return "img/flags/xx.svg";
   }
 }
 
@@ -81,7 +127,7 @@ function GetMapName(mapname) {
 
 <tr>
   <td class="region"><img class="regionimg" src={regionimg} title={CountryJson[region]} /></td>
-  <td class="name">{name}</td>
+  <td class="name" style={colorcode2}>{serverName}</td>
   <td class="players">{players}/{minplayers}</td>
   <td class="gamemode">{GetGamemode(playlist)}</td>
   <td class="map"><img class="regionimg" src={mapimg} title={GetMapName(map)} />{GetMapName(map)}</td>

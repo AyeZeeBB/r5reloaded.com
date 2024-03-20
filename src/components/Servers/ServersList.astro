@@ -10,10 +10,14 @@ const ServerListing = await response.json();
 console.log(ServerListing);
 const servers = ServerListing.servers;
 
+const filteredServers = [];
 let totalPlayers = 0;
 
 servers.forEach((server) => {
-  totalPlayers += Number(server.playerCount);
+  if (server.map && server.playlist && server.map !== "" && server.maxPlayers !== 0) {
+    filteredServers.push(server);
+    totalPlayers += Number(server.playerCount);
+  }
 });
 
 export const prerender = false;
@@ -40,7 +44,7 @@ export const prerender = false;
     <th class="gamemode">Gamemode <span class="sort-arrow"></span></th>
     <th class="map">Map <span class="sort-arrow"></span></th>
   </tr>
-  {servers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
+  {filteredServers.map((server) => <ServerItem name={server.name} playlist={server.playlist} region={server.region} players={server.playerCount} minplayers={server.maxPlayers} map={server.map} />)}
 </table>
 
 <div id="refreshingText" class="refreshtext" style="display: none;">Refreshing servers...</div>
