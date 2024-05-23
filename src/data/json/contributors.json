@@ -42,6 +42,12 @@
         "github": "https://github.com/ColombianGuy"
       },
       {
+        "name": "mkos",
+        "desc": "Scripting, Flowstate",
+        "image": "./img/contributors/mkos.webp",
+        "github": "https://github.com/ttvmkos"
+      },
+      {
         "name": "Mostly Fireproof",
         "desc": "Scripting",
         "image": "./img/contributors/Fireproof.webp",
