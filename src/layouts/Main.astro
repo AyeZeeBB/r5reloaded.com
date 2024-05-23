@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/R5R-Logo-White.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>{title}</title>
+    <meta content="R5Reloaded" property="og:title" />
+    <meta content="An Apex Legends Modding SDK" property="og:description" />
+    <meta content="https://r5reloaded.com" property="og:url" />
+    <meta content="https://r5reloaded.com/newsite/img/R5R-Logo-White.gif" property="og:image" />
+    <meta content="#d43d2c" data-react-helmet="true" name="theme-color" />
+    <script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  
+</style>
