@@ -1,0 +1,93 @@
+---
+
+---
+
+<div class="bg">
+    <slot/>
+    <div class="content">
+        <img class="animated-fade-in animated-size-in" src="./img/R5R-Logo-White.gif" alt="logo">
+        <h1>R5Reloaded</h1>
+        <p class="element">Still figuring out what would be some better text to put here</p>
+    </div>
+</div>
+
+<style>
+
+    @keyframes fadeIn {
+        0% {
+            transform: scale(0.75);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes floatDown {
+        10% {
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .animated-fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .element {
+        opacity: 0; /* Initially hidden */
+        transform: translateY(-35px); /* Start position (above the final position) */
+        animation: floatDown 1s ease-out forwards; /* 2s float down animation */
+    }
+
+    .bg {
+        height: calc(100px + 100vh);
+        margin-bottom: -150px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(./img/bg.jpg);
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 60%;
+        color: white;
+        text-align: center;
+    }
+
+    .content img {
+        max-width: 250px;
+        width: 50%;
+    }
+
+    .content h1 {
+        color:white;
+        font-family: 'Panton-Trial-Black', sans-serif;
+        font-size: clamp(2rem, 10vw, 3.15rem);
+        font-weight: 900;
+        letter-spacing: 2.4px;
+        text-decoration: none solid rgb(255, 255, 255);
+        text-transform: uppercase;
+        word-spacing: 0px;
+        margin: 0px;
+    }
+
+    .content p {
+        color:white;
+        font-family: 'Panton-Trial-Regular', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 200;
+        letter-spacing: 0.75px;
+        text-decoration: none solid rgb(255, 255, 255);
+        word-spacing: 0px;
+        margin: 0px;
+    }
+</style>
