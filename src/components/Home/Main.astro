@@ -7,7 +7,7 @@
     <div class="content">
         <img class="animated-fade-in animated-size-in" src="./img/R5R-Logo-White.gif" alt="logo">
         <h1>R5Reloaded</h1>
-        <p class="element">Still figuring out what would be some better text to put here</p>
+        <p class="animate-down">Still figuring out what would be some better text to put here</p>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
         }
     }
 
-    @keyframes floatDown {
+    @keyframes floatDownFadeIn {
         10% {
             opacity: 0;
         }
@@ -38,10 +38,10 @@
         animation: fadeIn 1s ease-in-out forwards;
     }
 
-    .element {
-        opacity: 0; /* Initially hidden */
-        transform: translateY(-35px); /* Start position (above the final position) */
-        animation: floatDown 1s ease-out forwards; /* 2s float down animation */
+    .animate-down {
+        opacity: 0;
+        transform: translateY(-35px);
+        animation: floatDownFadeIn 1s ease-out forwards;
     }
 
     .bg {
@@ -50,7 +50,7 @@
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(./img/bg.jpg);
+        background-image: linear-gradient(to top, rgba(8, 8, 8, 1), rgba(8, 8, 8, 0)), url(./img/bg.jpg);
     }
 
     .content {
