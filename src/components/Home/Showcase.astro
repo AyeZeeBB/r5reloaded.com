@@ -1,19 +1,58 @@
+---
+import { Image } from 'astro:assets';
+const imageFiles = await Astro.glob('/src/assets/img/showcase/*');
+---
+
 <div class="black-background">
   <div class="pic-ctn">
-    <img src="./img/carrossel/1.webp" alt="" class="pic" />
-    <img src="./img/carrossel/2.webp" alt="" class="pic" />
-    <img src="./img/carrossel/3.webp" alt="" class="pic" />
-    <img src="./img/carrossel/4.webp" alt="" class="pic" />
-    <img src="./img/carrossel/5.webp" alt="" class="pic" />
+    {
+      imageFiles.map((img) => (
+        <Image
+          src={img.default}
+          alt=""
+          class="pic"
+        />
+      ))
+    }
   </div>
 </div>
 
+<script>
+  const images = document.querySelectorAll('.pic-ctn > img');
+  const animationDuration = images.length * 2.5; // total duration of the animation in seconds
+  const totalImages = images.length;
+  const imageVisibleTime = animationDuration / totalImages; // time each image is visible
+
+  let currentIndex = 0;
+
+  function showNextImage() {
+    // Hide all images
+    images.forEach((img, index) => {
+      img.style.opacity = 0;
+      img.style.transition = `opacity ${imageVisibleTime / 2}s ease-in-out`;
+    });
+
+    // Show the current image
+    images[currentIndex].style.opacity = 1;
+
+    // Move to the next image
+    currentIndex = (currentIndex + 1) % totalImages;
+
+    // Schedule the next image
+    setTimeout(showNextImage, imageVisibleTime * 1000);
+  }
+
+  // Start the animation
+  showNextImage();
+</script>
+
+
+
 <style>
   .black-background {
-    /* width: 100%; */
     margin-top: 50px;
-    padding: 0px 0px 0px 0px;
-    background-color: #1f212200
+    padding: 0;
+    background-color: #1f2122;
     border-radius: 5px;
   }
 
@@ -24,53 +63,13 @@
     overflow: hidden; /* To ensure the child images are clipped within the container */
   }
 
-  @keyframes display {
-    0% {
-      /*transform: translateX(200px);*/
-      opacity: 0;
-    }
-    10% {
-      /*transform: translateX(0);*/
-      opacity: 1;
-    }
-    20% {
-      /*transform: translateX(0);*/
-      opacity: 1;
-    }
-    30% {
-      /*transform: translateX(-200px);*/
-      opacity: 0;
-    }
-    100% {
-      /*transform: translateX(-200px);*/
-      opacity: 0;
-    }
-  }
-
   .pic-ctn > img {
     position: absolute;
     top: 0;
-    opacity: 0;
-    animation: display 10s infinite;
-    border-radius: 10px;
+    opacity: 0; /* Start with images hidden */
     width: 100%;
     height: 100%;
-  }
-
-  .pic-ctn > img:nth-child(2) {
-    animation-delay: 2s;
-  }
-
-  .pic-ctn > img:nth-child(3) {
-    animation-delay: 4s;
-  }
-
-  .pic-ctn > img:nth-child(4) {
-    animation-delay: 6s;
-  }
-
-  .pic-ctn > img:nth-child(5) {
-    animation-delay: 8s;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
   }
 
   @media (max-width: 1400px) {
