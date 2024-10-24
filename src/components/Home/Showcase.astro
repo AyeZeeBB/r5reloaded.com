@@ -15,105 +15,127 @@ const imageFiles = await Astro.glob('/src/assets/img/showcase/*');
       ))
     }
   </div>
+  <div class="dots">
+    {
+      imageFiles.map((_, index) => (
+        <span class="dot" data-index={index}></span>
+      ))
+    }
+  </div>
 </div>
 
 <script>
-  const images = document.querySelectorAll('.pic-ctn > img');
-  const animationDuration = images.length * 2.5; // total duration of the animation in seconds
+  const images = document.querySelectorAll('.pic');
   const totalImages = images.length;
-  const imageVisibleTime = animationDuration / totalImages; // time each image is visible
+  const animationDuration = totalImages * 3.5; // Total duration of the animation in seconds
+  const imageVisibleTime = animationDuration / totalImages; // Time each image is visible
+  const dots = document.querySelectorAll('.dot');
+  dots[0].classList.add('active');
 
   let currentIndex = 0;
+  let autoScroll;
 
-  function showNextImage() {
-    // Hide all images
-    images.forEach((img, index) => {
-      img.style.opacity = 0;
-      img.style.transition = `opacity ${imageVisibleTime / 2}s ease-in-out`;
-    });
+  function scrollImages() {
+    const offset = currentIndex * 100.75; // Calculate offset based on index
+    document.querySelector('.pic-ctn').style.transform = `translateX(-${offset}%)`;
 
-    // Show the current image
-    images[currentIndex].style.opacity = 1;
+    // Update active dot
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
 
-    // Move to the next image
     currentIndex = (currentIndex + 1) % totalImages;
 
-    // Schedule the next image
-    setTimeout(showNextImage, imageVisibleTime * 1000);
+    autoScroll = setTimeout(scrollImages, imageVisibleTime * 1000);
   }
 
+  // Jump to specific image on dot click
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      clearTimeout(autoScroll); // Stop auto-scrolling
+      const index = parseInt(e.target.getAttribute('data-index'));
+      currentIndex = index; // Set currentIndex to the clicked index
+      scrollImages(); // Call scrollImages to animate to the new index
+    });
+  });
+
   // Start the animation
-  showNextImage();
+  autoScroll = setTimeout(scrollImages, imageVisibleTime * 1000);
 </script>
-
-
 
 <style>
   .black-background {
     margin-top: 50px;
     padding: 0;
-    background-color: #1f2122;
+    background-color: transparent;
     border-radius: 5px;
+    overflow: hidden;
+    position: relative; /* Add relative positioning for dots */
   }
 
   .pic-ctn {
-    width: 100%;
+    display: flex; /* Use flexbox for horizontal layout */
     height: 700px; /* Adjust the height of the container as needed */
     position: relative;
-    overflow: hidden; /* To ensure the child images are clipped within the container */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for scrolling */
   }
 
-  .pic-ctn > img {
-    position: absolute;
-    top: 0;
-    opacity: 0; /* Start with images hidden */
-    width: 100%;
+  .pic {
+    min-width: 100%; /* Adjust to account for margin */
     height: 100%;
-    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+    object-fit: cover; /* Maintain aspect ratio without stretching */
+    margin-right: 10px; /* Space between images */
+  }
+
+  .pic:last-child {
+    margin-right: 0; /* Remove margin from the last image */
+  }
+
+  .dots {
+    display: flex; /* Align dots horizontally */
+    justify-content: center; /* Center the dots */
+    margin-top: 10px; /* Space above the dots */
+  }
+
+  .dot {
+    height: 10px; /* Height of the dot */
+    width: 10px; /* Width of the dot */
+    margin: 0 5px; /* Space between dots */
+    background-color: #bbb; /* Default dot color */
+    border-radius: 50%; /* Make dots circular */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+
+  .dot.active {
+    background-color: #fff; /* Active dot color */
   }
 
   @media (max-width: 1400px) {
     .pic-ctn {
-      width: 100%;
       height: 500px; /* Adjust the height of the container as needed */
-      position: relative;
-      overflow: hidden; /* To ensure the child images are clipped within the container */
     }
   }
 
   @media (max-width: 1200px) {
     .pic-ctn {
-      width: 100%;
       height: 400px; /* Adjust the height of the container as needed */
-      position: relative;
-      overflow: hidden; /* To ensure the child images are clipped within the container */
     }
   }
 
   @media (max-width: 992px) {
     .pic-ctn {
-      width: 100%;
       height: 300px; /* Adjust the height of the container as needed */
-      position: relative;
-      overflow: hidden; /* To ensure the child images are clipped within the container */
     }
   }
 
   @media (max-width: 768px) {
     .pic-ctn {
-      width: 100%;
       height: 200px; /* Adjust the height of the container as needed */
-      position: relative;
-      overflow: hidden; /* To ensure the child images are clipped within the container */
     }
   }
 
   @media (max-width: 576px) {
     .pic-ctn {
-      width: 100%;
       height: 200px; /* Adjust the height of the container as needed */
-      position: relative;
-      overflow: hidden; /* To ensure the child images are clipped within the container */
     }
   }
 </style>
