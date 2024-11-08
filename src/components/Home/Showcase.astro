@@ -1,14 +1,25 @@
 ---
 import { Image } from 'astro:assets';
-const imageFiles = await Astro.glob('/src/assets/img/showcase/*');
+const imageFiles = [
+  "https://utfs.io/f/YBTHYqEAQmVXCgBmLLMq90yrJWfCVTSN4jzIaRbcYXenQ6kU",
+  "https://utfs.io/f/YBTHYqEAQmVXzkMqbH3yNBkSnfgisG7pM42hxqrw0VTDtHmu",
+  "https://utfs.io/f/YBTHYqEAQmVX4yeeaUbLp9ci8BfS3CKjFulVgw6DxUPmnqAQ",
+  "https://utfs.io/f/YBTHYqEAQmVX7cYslHGvXlR5IUtkarQpoWV6N29CgZudGhiy",
+  "https://utfs.io/f/YBTHYqEAQmVX2MgFcC1lWeh6IHUxKCfkc821wMQqsgSZPOBV",
+  "https://utfs.io/f/YBTHYqEAQmVX85hSeDidSFv59DinQM4Cl2ERwNB0ehTOpuGs",
+  "https://utfs.io/f/YBTHYqEAQmVX5oUO31Le9jwZDvAcN7LKVoQGWaTMFlpgI3Su",
+  "https://utfs.io/f/YBTHYqEAQmVXDZ0v2WO3xlBIOaTK8zAQvp6Vwr7hFN9ucGUe",
+  "https://utfs.io/f/YBTHYqEAQmVXt7xrU3waDhV29Qem5gkdy0IocvK6JqH3WCPu",
+  "https://utfs.io/f/YBTHYqEAQmVX02VBbtl2WveRdD1uEKobBm3lVNMwXistjAaf"
+];
 ---
 
 <div class="black-background">
   <div class="pic-ctn">
     {
       imageFiles.map((img) => (
-        <Image
-          src={img.default}
+        <img
+          src={img}
           alt=""
           class="pic"
         />
