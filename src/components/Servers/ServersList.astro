@@ -159,12 +159,12 @@ export const prerender = false;
       await sleep(1000);
 
       // Make a new API request
-      var response = await fetch("https://ms.r5reloaded.com/servers", {
+      var response = await fetch("https://r5r.org/servers", {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
       });
 
-      var CountryData = await fetch("./data/json/countryname.json");
+      var CountryData = await fetch("./json/countryname.json");
       var CountryJson = await CountryData.json();
 
       console.log(response);
@@ -187,7 +187,7 @@ export const prerender = false;
   <td class="name">${server.name}</td>
   <td class="players">${server.playerCount}/${server.maxPlayers}</td>
   <td class="gamemode">${GetGamemode(server.playlist)}</td>
-  <td class="map"><img class="regionimg" src="img/maps/${server.map.toLowerCase()}.webp" title="${GetMapName(server.map)}" />${GetMapName(server.map)}</td>
+  <td class="map"><img class="regionimg" src="${GetMapImage(server.map.toLowerCase())}" title="${GetMapName(server.map)}" />${GetMapName(server.map)}</td>
 </tr>`;
         table.append(serverItem);
 
@@ -257,6 +257,51 @@ export const prerender = false;
           return "Lobby";
         default:
           return mapname;
+      }
+    }
+
+    function GetMapImage(mapname) {
+      switch (mapname) {
+        case "mp_rr_canyonlands_staging":
+          return "https://utfs.io/f/YBTHYqEAQmVXN13Wg8EhLKsPXFiUvfa3VE08HYDzep9TWk1x";
+        case "mp_rr_aqueduct":
+          return "https://utfs.io/f/YBTHYqEAQmVXfhVEVQ6Go38UMWyrOx6K2ZHD0Xwd4epnVhub";
+        case "mp_rr_aqueduct_night":
+          return "https://utfs.io/f/YBTHYqEAQmVXLNZhJhhAyNH1n5grZElJ7QkoDz9tKcFS4YTb";
+        case "mp_rr_ashs_redemption":
+          return "https://utfs.io/f/YBTHYqEAQmVXQ4FmoQHOCDxNTaz70r5wG2k8bvZhSQYgKBAF";
+        case "mp_rr_canyonlands_64k_x_64k":
+          return "https://utfs.io/f/YBTHYqEAQmVXzCy5oGA3yNBkSnfgisG7pM42hxqrw0VTDtHm";
+        case "mp_rr_canyonlands_mu1":
+          return "https://utfs.io/f/YBTHYqEAQmVX5K4gvgOLe9jwZDvAcN7LKVoQGWaTMFlpgI3S";
+        case "mp_rr_canyonlands_mu1_night":
+          return "https://utfs.io/f/YBTHYqEAQmVXb3PzX8wU1M5zWwyAUekG7oxScLJ3bYQRlOtq";
+        case "mp_rr_desertlands_64k_x_64k":
+          return "https://utfs.io/f/YBTHYqEAQmVXdwg2dBiNPAGK3tHBi9rMbaTvq8oYVfRWxE1y";
+        case "mp_rr_desertlands_64k_x_64k_nx":
+          return "https://utfs.io/f/YBTHYqEAQmVXKG9YOLNGP54wC3tWap7o1zqhIcATYOvuy8HB";
+        case "mp_rr_desertlands_64k_x_64k_tt":
+          return "https://utfs.io/f/YBTHYqEAQmVX851sbVmdSFv59DinQM4Cl2ERwNB0ehTOpuGs";
+        case "mp_rr_arena_composite":
+          return "https://utfs.io/f/YBTHYqEAQmVXkR21oRZHxWSK9QoZyuTqOJF3seXE4n1RPald";
+        case "mp_rr_arena_skygarden":
+          return "https://utfs.io/f/YBTHYqEAQmVXiexZNx5H4fwLMs9hkvl8cBXYUmyV6Waq0duN";
+        case "mp_rr_party_crasher":
+          return "https://utfs.io/f/YBTHYqEAQmVXEPJSixo7owyIjNZ2fL0YA5dRGzgFuKp1OcD9";
+        case "mp_rr_arena_phase_runner":
+          return "https://utfs.io/f/YBTHYqEAQmVXXhAuM5CaRZMyBjm7FHYGbpuQV8NofAD9hTt0";
+        case "mp_rr_olympus_mu1":
+          return "https://utfs.io/f/YBTHYqEAQmVXXFOkF0CaRZMyBjm7FHYGbpuQV8NofAD9hTt0";
+        case "mp_flowstate":
+          return "https://utfs.io/f/YBTHYqEAQmVXdL22kEViNPAGK3tHBi9rMbaTvq8oYVfRWxE1";
+        case "mp_rr_arena_empty":
+          return "https://utfs.io/f/YBTHYqEAQmVXdL22kEViNPAGK3tHBi9rMbaTvq8oYVfRWxE1";
+        case "mp_rr_construct":
+          return "https://utfs.io/f/YBTHYqEAQmVXNdug6YhLKsPXFiUvfa3VE08HYDzep9TWk1xy";
+        case "mp_rr_desertlands_holiday":
+          return "https://utfs.io/f/YBTHYqEAQmVXAEgBmUKPo0g4yqrvKkDc9Y2mJsH8j7AGtuVB";
+        default:
+          return "https://utfs.io/f/YBTHYqEAQmVXdL22kEViNPAGK3tHBi9rMbaTvq8oYVfRWxE1";
       }
     }
 
